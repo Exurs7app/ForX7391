@@ -1,0 +1,2985 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="application-name" content="ForX">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ForX">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#3772ff">
+    <meta name="description" content="منصة تداول العملات الرقمية ForX - تداول آمن وسريع مع ميزات متقدمة">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%233772ff'/%3E%3Cpath fill='%23ffffff' d='M256 128l64 128h-48l-16 128 48-96 48 96-16-128h-48l-32-128z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" sizes="152x152" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='152' height='152'%3E%3Crect width='512' height='512' rx='100' fill='%233772ff'/%3E%3Cpath fill='%23ffffff' d='M256 128l64 128h-48l-16 128 48-96 48 96-16-128h-48l-32-128z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" sizes="120x120" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='120' height='120'%3E%3Crect width='512' height='512' rx='100' fill='%233772ff'/%3E%3Cpath fill='%23ffffff' d='M256 128l64 128h-48l-16 128 48-96 48 96-16-128h-48l-32-128z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%233772ff'/%3E%3Cpath fill='%23ffffff' d='M256 128l64 128h-48l-16 128 48-96 48 96-16-128h-48l-32-128z'/%3E%3C/svg%3E">
+
+    <title>ForX · الأسواق | تداول العملات الرقمية</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js">
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'light-bg': '#f8fafc',
+                        'light-card': '#ffffff',
+                        'light-border': '#e2e8f0',
+                        'crypto-green': '#02c076',
+                        'crypto-red': '#f84960',
+                        'crypto-blue': '#3772ff',
+                        'text-primary': '#1e293b',
+                        'text-secondary': '#64748b',
+                        'dark-bg': '#0f172a',
+                        'dark-card': '#1e293b',
+                        'dark-border': '#334155',
+                        'dark-text': '#e2e8f0',
+                        'dark-text-secondary': '#94a3b8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --input-bg: #f1f5f9;
+            --hover-bg: rgba(0, 0, 0, 0.02);
+        }
+
+        .dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.9);
+            --input-bg: #1e293b;
+            --hover-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3772ff 0%, #5a4cfa 100%);
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(55, 114, 255, 0.2);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #02c076 0%, #00a862 100%);
+            transition: all 0.2s ease;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #f84960 0%, #dc3545 100%);
+            transition: all 0.2s ease;
+        }
+
+        .bottom-nav-item {
+            transition: all 0.2s ease;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .bottom-nav-item.active {
+            color: #3772ff;
+        }
+        .bottom-nav-item i {
+            font-size: 1.4rem;
+        }
+
+        .asset-row {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+        .asset-row:hover {
+            background: var(--hover-bg);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-input,
+        .profile-input {
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            width: 100%;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+        .auth-input:focus,
+        .profile-input:focus {
+            outline: none;
+            border-color: #3772ff;
+            background: var(--card);
+            box-shadow: 0 0 0 3px rgba(55, 114, 255, 0.1);
+        }
+
+        .tab-active {
+            color: #3772ff !important;
+            border-bottom: 2px solid #3772ff;
+            font-weight: 600;
+        }
+
+        .error-message {
+            color: #f84960;
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        .success-message {
+            color: #02c076;
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
+            right: 20px;
+            background: #1e293b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 40px;
+            text-align: center;
+            z-index: 100;
+            animation: slideUp 0.3s;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeOverlay 0.3s;
+        }
+        @keyframes fadeOverlay {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .page {
+            display: none;
+        }
+        .page.active-page {
+            display: block;
+        }
+
+        .network-btn {
+            transition: all 0.2s;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .network-btn.active-network {
+            background: #3772ff;
+            color: white;
+            border-color: #3772ff;
+        }
+
+        .timeframe-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .timeframe-btn.active {
+            background: #3772ff;
+            color: white;
+            border-color: #3772ff;
+        }
+
+        .symbol-chip {
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .symbol-chip.active {
+            background: #3772ff;
+            color: white;
+            border-color: #3772ff;
+            box-shadow: 0 4px 8px rgba(55, 114, 255, 0.2);
+        }
+        .symbol-chip i {
+            margin-left: 6px;
+        }
+
+        canvas {
+            touch-action: none;
+            user-select: none;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border);
+        }
+
+        .chart-tooltip {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.9);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            z-index: 50;
+            transition: opacity 0.15s;
+            opacity: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chart-tooltip.visible {
+            opacity: 1;
+        }
+
+        .trade-btn-buy {
+            background: #02c076;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            flex: 1;
+        }
+        .trade-btn-buy:hover {
+            background: #00a862;
+            box-shadow: 0 6px 16px rgba(2, 192, 118, 0.3);
+        }
+        .trade-btn-sell {
+            background: #f84960;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            flex: 1;
+        }
+        .trade-btn-sell:hover {
+            background: #dc3545;
+            box-shadow: 0 6px 16px rgba(248, 73, 96, 0.3);
+        }
+
+        .alert-badge {
+            animation: pulse-badge 2s infinite;
+        }
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(55, 114, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(55, 114, 255, 0);
+            }
+        }
+
+        .dark-mode-toggle {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .dark-mode-toggle:hover {
+            background: #3772ff;
+            color: white;
+            border-color: #3772ff;
+        }
+
+        .order-book-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .order-book-header {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            background: var(--input-bg);
+        }
+
+        .price-alert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: var(--input-bg);
+            margin-bottom: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .market-row-price {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text);
+            font-variant-numeric: tabular-nums;
+        }
+        .market-row-sub {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            margin-top: 1px;
+        }
+        .market-row-change {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-variant-numeric: tabular-nums;
+        }
+        .market-row-change.up {
+            color: #02c076;
+            background: rgba(2, 192, 118, 0.12);
+        }
+        .market-row-change.down {
+            color: #f84960;
+            background: rgba(248, 73, 96, 0.12);
+        }
+        .market-row-vol {
+            font-size: 0.62rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            font-variant-numeric: tabular-nums;
+        }
+        .market-cap-badge {
+            font-size: 0.58rem;
+            padding: 1px 5px;
+            border-radius: 4px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: inline-block;
+            margin-top: 2px;
+        }
+        .market-rank {
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background: var(--input-bg);
+            padding: 1px 5px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .sparkline-wrap {
+            width: 56px;
+            height: 22px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .market-row-extra {
+            font-size: 0.58rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+            font-variant-numeric: tabular-nums;
+        }
+        .asset-row {
+            transition: background 0.15s ease;
+        }
+        .asset-row:hover {
+            background: var(--input-bg);
+        }
+        .asset-row + .asset-row {
+            border-top: 1px solid var(--border);
+        }
+        .chart-container {
+            background: linear-gradient(180deg, rgba(55,114,255,0.03) 0%, rgba(255,255,255,0) 60%);
+        }
+        .dark .chart-container {
+            background: linear-gradient(180deg, rgba(55,114,255,0.06) 0%, rgba(0,0,0,0) 60%);
+        }
+        .live-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #02c076;
+            box-shadow: 0 0 0 0 rgba(2,192,118,0.7);
+            animation: livePulse 1.6s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        @keyframes livePulse {
+            0% { box-shadow: 0 0 0 0 rgba(2,192,118,0.6); }
+            70% { box-shadow: 0 0 0 6px rgba(2,192,118,0); }
+            100% { box-shadow: 0 0 0 0 rgba(2,192,118,0); }
+        }
+    </style>
+</head>
+<body class="bg-light-bg text-primary antialiased">
+
+    <div class="max-w-md mx-auto min-h-screen relative shadow-2xl shadow-gray-100" style="background-color: var(--bg);">
+
+        <!-- ========== شاشة المصادقة ========== -->
+        <div id="auth-screen" class="fade-in flex flex-col min-h-screen" style="background-color: var(--card);">
+            <div class="sticky top-0 z-30 border-b px-4 py-3 flex items-center justify-between" style="background: var(--glass-bg); border-color: var(--border);">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-bolt text-crypto-blue text-xl"></i>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-crypto-blue to-purple-500 bg-clip-text text-transparent">ForX</h1>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="dark-mode-toggle" id="dark-mode-toggle-auth" title="تبديل الوضع الليلي">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <i id="install-icon-auth" class="fas fa-download install-icon-btn hidden alert-badge" title="تثبيت التطبيق" style="cursor:pointer;width:36px;height:36px;border-radius:50%;background:rgba(55,114,255,0.1);color:#3772ff;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;"></i>
+                </div>
+            </div>
+
+            <div class="pt-6 px-6 text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-crypto-blue to-purple-500 shadow-lg mb-4">
+                    <i class="fas fa-bolt text-white text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold" style="color: var(--text);">ForX</h1>
+                <p style="color: var(--text-secondary);" class="mt-2 text-sm">منصة تداول العملات الرقمية</p>
+            </div>
+
+            <div class="px-6 mt-8">
+                <div class="flex border-b" style="border-color: var(--border);">
+                    <button id="tab-login" class="flex-1 py-3 text-center font-medium tab-active transition-all" style="color: var(--text-secondary);">تسجيل الدخول</button>
+                    <button id="tab-signup" class="flex-1 py-3 text-center font-medium transition-all" style="color: var(--text-secondary);">إنشاء حساب</button>
+                </div>
+            </div>
+
+            <div id="login-form" class="px-6 mt-6 space-y-5">
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">البريد الإلكتروني</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="email" id="login-email" class="auth-input pr-10" placeholder="example@domain.com" value="">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">كلمة المرور</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="password" id="login-password" class="auth-input pr-10" placeholder="••••••••">
+                    </div>
+                </div>
+                <div id="login-error" class="error-message hidden"></div>
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center gap-2 text-sm" style="color: var(--text-secondary);">
+                        <input type="checkbox" id="remember-me" class="rounded border-gray-300 text-crypto-blue focus:ring-crypto-blue"> تذكرني
+                    </label>
+                    <button id="forgot-password-btn" class="text-sm text-crypto-blue font-medium">نسيت كلمة المرور؟</button>
+                </div>
+                <button id="login-btn" class="btn-primary w-full py-3.5 rounded-xl text-white font-semibold text-base shadow-lg flex items-center justify-center gap-2 mt-4">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+                <p class="text-center text-sm mt-4" style="color: var(--text-secondary);">ليس لديك حساب؟ <span id="switch-to-signup" class="text-crypto-blue font-medium cursor-pointer">إنشاء حساب جديد</span></p>
+            </div>
+
+            <div id="signup-form" class="px-6 mt-6 space-y-5 hidden">
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">الاسم الكامل</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="signup-name" class="auth-input pr-10" placeholder="أدخل اسمك الكامل">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">البريد الإلكتروني</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="email" id="signup-email" class="auth-input pr-10" placeholder="بريدك الإلكتروني">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">كلمة المرور</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="password" id="signup-password" class="auth-input pr-10" placeholder="6 أحرف على الأقل">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">تأكيد كلمة المرور</label>
+                    <div class="relative">
+                        <i class="fas fa-check-circle absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="password" id="signup-confirm" class="auth-input pr-10" placeholder="أعد كتابة كلمة المرور">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">كود الدعوة (اختياري)</label>
+                    <div class="relative">
+                        <i class="fas fa-gift absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="signup-referral-code" class="auth-input pr-10" placeholder="أدخل كود الدعوة إن وجد">
+                    </div>
+                </div>
+                <div id="signup-error" class="error-message hidden"></div>
+                <div id="signup-success" class="success-message hidden"></div>
+                <div class="flex items-start gap-2 mt-2">
+                    <input type="checkbox" id="agree-terms" class="mt-1 rounded border-gray-300 text-crypto-blue focus:ring-crypto-blue">
+                    <span class="text-xs" style="color: var(--text-secondary);">أوافق على <a href="#" class="text-crypto-blue">الشروط والأحكام</a> وسياسة الخصوصية</span>
+                </div>
+                <button id="signup-btn" class="btn-primary w-full py-3.5 rounded-xl text-white font-semibold text-base shadow-lg flex items-center justify-center gap-2 mt-4">
+                    <i class="fas fa-user-plus"></i> إنشاء حساب جديد
+                </button>
+                <p class="text-center text-sm mt-4" style="color: var(--text-secondary);">لديك حساب بالفعل؟ <span id="switch-to-login" class="text-crypto-blue font-medium cursor-pointer">تسجيل الدخول</span></p>
+            </div>
+        </div>
+
+        <!-- ========== شاشة المنصة (الصفحات) ========== -->
+        <div id="main-screen" class="hidden min-h-screen pb-20 relative">
+            <div class="sticky top-0 z-30 border-b px-4 py-3 flex items-center justify-between" style="background: var(--glass-bg); border-color: var(--border);">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-bolt text-crypto-blue text-xl"></i>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-crypto-blue to-purple-500 bg-clip-text text-transparent">ForX</h1>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="dark-mode-toggle" id="dark-mode-toggle-main" title="تبديل الوضع الليلي">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="flex items-center gap-1 px-3 py-1.5 rounded-full" style="background: var(--input-bg);">
+                        <i class="fas fa-user-circle text-crypto-blue text-sm"></i>
+                        <span id="display-username" class="text-sm font-medium" style="color: var(--text);">مستخدم</span>
+                    </div>
+                    <i id="alert-bell-icon" class="fas fa-bell cursor-pointer hover:text-crypto-blue transition" style="color: var(--text-secondary); position: relative;" title="التنبيهات">
+                        <span id="alert-count-badge" class="hidden" style="position: absolute; top: -6px; right: -8px; background: #f84960; color: white; font-size: 0.6rem; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">0</span>
+                    </i>
+                    <i id="install-icon-main" class="fas fa-download install-icon-btn hidden alert-badge" title="تثبيت التطبيق" style="cursor:pointer;width:36px;height:36px;border-radius:50%;background:rgba(55,114,255,0.1);color:#3772ff;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;"></i>
+                    <button id="logout-btn-header" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80 transition" style="background: var(--input-bg);">
+                        <i class="fas fa-sign-out-alt text-sm" style="color: var(--text-secondary);"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========== الصفحات ========== -->
+            <div id="page-home" class="page active-page px-4 py-3 space-y-4 fade-in">
+                <div class="glass-card rounded-2xl p-5 shadow-md">
+                    <div class="flex items-center gap-2 mb-2" style="color: var(--text-secondary);"><i class="fas fa-wallet text-crypto-blue"></i><span class="text-sm font-medium">الإيداع</span></div>
+                    <div class="text-4xl font-bold tracking-tight" id="home-balance">0.00 USDT</div>
+                    <div class="flex items-center gap-2 mt-2 text-sm">
+                        <span style="color: var(--text-secondary);" class="flex items-center gap-1"><i class="fas fa-minus-circle text-crypto-red"></i> <span id="home-withdrawn">0.00</span> USDT</span>
+                        <span style="color: var(--text-secondary);" class="flex items-center gap-1"><i class="fas fa-plus-circle text-crypto-green"></i> <span id="home-deposited">0.00</span> USDT</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button id="home-deposit-btn" class="btn-primary flex-1 py-2.5 rounded-xl text-white font-semibold text-sm shadow-lg flex items-center justify-center gap-2"><i class="fas fa-arrow-down"></i> إيداع</button>
+                        <button id="home-withdraw-btn" class="flex-1 py-2.5 rounded-xl border font-semibold text-sm flex items-center justify-center gap-2 hover:bg-gray-50 transition" style="border-color: var(--border); color: var(--text-secondary);"><i class="fas fa-arrow-up"></i> سحب</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <div id="new-news-btn" class="flex flex-col items-center glass-card rounded-xl py-3 px-1 cursor-pointer hover:shadow-md transition"><i class="fas fa-star text-yellow-500 text-lg"></i><span class="text-xs mt-1" style="color: var(--text-secondary);">آخر الأخبار</span></div>
+                    <div id="v-wallet-btn" class="flex flex-col items-center glass-card rounded-xl py-3 px-1 cursor-pointer hover:shadow-md transition"><i class="fas fa-credit-card text-purple-500 text-lg"></i><span class="text-xs mt-1" style="color: var(--text-secondary);">V-Wallet</span></div>
+                    <div id="invite-btn" class="flex flex-col items-center glass-card rounded-xl py-3 px-1 cursor-pointer hover:shadow-md transition"><i class="fas fa-user-plus text-purple-500 text-lg"></i><span class="text-xs mt-1" style="color: var(--text-secondary);">دعوة</span></div>
+                    <div id="price-alerts-btn" class="flex flex-col items-center glass-card rounded-xl py-3 px-1 cursor-pointer hover:shadow-md transition"><i class="fas fa-bell text-orange-400 text-lg"></i><span class="text-xs mt-1" style="color: var(--text-secondary);">تنبيهات</span></div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-trophy text-yellow-500"></i> أفضل 20 مزود إشارات</h2>
+                        <button id="show-more-providers-btn" class="text-crypto-blue text-sm font-medium flex items-center gap-1">عرض المزيد <i class="fas fa-chevron-left text-xs"></i></button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="glass-card rounded-xl p-4 shadow-sm">
+                            <div class="flex items-start justify-between mb-2"><div><h3 class="font-bold text-base">GROW MORE T...</h3><span class="text-xs flex items-center gap-1 mt-1" style="color: var(--text-secondary);"><i class="fab fa-bitcoin text-yellow-500"></i> Crypto</span></div><i class="fas fa-chevron-left text-gray-400 text-xs"></i></div>
+                            <div class="mt-3"><span class="text-xs" style="color: var(--text-secondary);">عائد 30 يوم</span><div class="text-2xl font-bold text-crypto-green">+153.65%</div></div>
+                            <div class="mt-3 h-10 w-full"><svg viewBox="0 0 100 20" class="w-full h-full"><polyline points="0,15 10,12 20,14 30,8 40,10 50,5 60,7 70,3 80,6 90,2 100,4" stroke="#02c076" stroke-width="1.5" fill="none"/></svg></div>
+                        </div>
+                        <div class="glass-card rounded-xl p-4 shadow-sm">
+                            <div class="flex items-start justify-between mb-2"><div><h3 class="font-bold text-base">G Horizon Fund...</h3><span class="text-xs flex items-center gap-1 mt-1" style="color: var(--text-secondary);"><i class="fas fa-oil-can text-orange-400"></i> Commodities</span></div><i class="fas fa-chevron-left text-gray-400 text-xs"></i></div>
+                            <div class="mt-3"><span class="text-xs" style="color: var(--text-secondary);">عائد 30 يوم</span><div class="text-2xl font-bold text-crypto-green">+70.58%</div></div>
+                            <div class="mt-3 h-10 w-full"><svg viewBox="0 0 100 20" class="w-full h-full"><polyline points="0,12 10,10 20,13 30,6 40,8 50,4 60,5 70,2 80,4 90,1 100,3" stroke="#02c076" stroke-width="1.5" fill="none"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-eye text-crypto-blue"></i> قائمة المراقبة</h2><button class="text-crypto-blue text-sm font-medium"><i class="fas fa-plus-circle"></i> إضافة</button></div>
+                    <div class="glass-card rounded-xl overflow-hidden shadow-sm">
+                        <div class="grid grid-cols-3 text-xs py-3 px-3 border-b" style="color: var(--text-secondary); background: var(--input-bg); border-color: var(--border);">
+                            <div>الزوج</div><div class="text-center">آخر سعر</div><div class="text-right">24س تغير</div>
+                        </div>
+                        <div class="asset-row grid grid-cols-3 py-3 px-3 items-center">
+                            <div class="flex items-center gap-2"><i class="fab fa-bitcoin text-yellow-500 text-lg"></i><div><div class="font-semibold">BTC/USDT</div><div class="text-xs" style="color: var(--text-secondary);">Bitcoin</div></div></div>
+                            <div class="text-center font-semibold">$68,245.50</div><div class="text-right text-crypto-green font-semibold">+2.34%</div>
+                        </div>
+                        <div class="asset-row grid grid-cols-3 py-3 px-3 items-center">
+                            <div class="flex items-center gap-2"><i class="fab fa-ethereum text-purple-500 text-lg"></i><div><div class="font-semibold">ETH/USDT</div><div class="text-xs" style="color: var(--text-secondary);">Ethereum</div></div></div>
+                            <div class="text-center font-semibold">$3,421.80</div><div class="text-right text-crypto-green font-semibold">+1.87%</div>
+                        </div>
+                        <div class="asset-row grid grid-cols-3 py-3 px-3 items-center">
+                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-teal-500 text-lg"></i><div><div class="font-semibold">APT/USDT</div><div class="text-xs" style="color: var(--text-secondary);">Aptos</div></div></div>
+                            <div class="text-center font-semibold">$9.50</div><div class="text-right text-crypto-green font-semibold">+3.12%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- صفحة الأسواق -->
+            <div id="page-markets" class="page px-4 py-3 space-y-4 fade-in">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold flex items-center gap-2" id="market-title"><i class="fab fa-bitcoin text-yellow-500"></i> BTC/USDT</h2>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-bold" id="current-price">68,245.50</span>
+                        <span class="text-sm font-medium px-2 py-1 rounded-lg" id="price-change">+2.34%</span>
+                    </div>
+                </div>
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2" id="symbols-container"></div>
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                    <button class="timeframe-btn active" data-tf="1D">1 يوم</button>
+                    <button class="timeframe-btn" data-tf="1W">1 أسبوع</button>
+                    <button class="timeframe-btn" data-tf="1M">1 شهر</button>
+                    <button class="timeframe-btn" data-tf="3M">3 أشهر</button>
+                    <button class="timeframe-btn" data-tf="1Y">1 سنة</button>
+                </div>
+                <div class="chart-container glass-card">
+                    <canvas id="candlestick-chart" width="400" height="240" class="w-full h-auto" style="touch-action: none;"></canvas>
+                    <div id="chart-tooltip" class="chart-tooltip">Open: -- High: -- Low: -- Close: --</div>
+                    <div class="chart-controls" style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding:0 4px;">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs" id="chart-start-label" style="color: var(--text-secondary);">00:00</span>
+                            <span class="text-xs" id="chart-end-label" style="color: var(--text-secondary);">23:59</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="chart-zoom-in" class="w-7 h-7 rounded-full flex items-center justify-center hover:opacity-80 transition" style="background: var(--input-bg); color: var(--text-secondary);"><i class="fas fa-search-plus text-xs"></i></button>
+                            <button id="chart-zoom-out" class="w-7 h-7 rounded-full flex items-center justify-center hover:opacity-80 transition" style="background: var(--input-bg); color: var(--text-secondary);"><i class="fas fa-search-minus text-xs"></i></button>
+                            <button id="chart-reset" class="w-7 h-7 rounded-full flex items-center justify-center hover:opacity-80 transition" style="background: var(--input-bg); color: var(--text-secondary);"><i class="fas fa-sync-alt text-xs"></i></button>
+                            <span class="zoom-indicator text-xs" id="zoom-level" style="color: var(--text-secondary);">100%</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- أزرار التداول السريع -->
+                <div class="flex gap-3 mt-2">
+                    <button id="quick-buy-btn" class="trade-btn-buy flex items-center justify-center gap-2"><i class="fas fa-chart-line"></i> شراء سريع</button>
+                    <button id="quick-sell-btn" class="trade-btn-sell flex items-center justify-center gap-2"><i class="fas fa-chart-line"></i> بيع سريع</button>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold flex items-center gap-2"><i class="fas fa-fire text-orange-400"></i> الأكثر تداولاً</h3>
+                    <div class="glass-card rounded-xl overflow-hidden">
+                        <div class="grid grid-cols-3 text-xs py-2.5 px-3 border-b" style="color: var(--text-secondary); background: var(--input-bg); border-color: var(--border);">
+                            <div>الزوج / القيمة السوقية</div>
+                            <div class="text-center">السعر / أعلى-أدنى</div>
+                            <div class="text-right">التغير / الحجم</div>
+                        </div>
+                        <div id="top-markets-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- صفحة التزامن بالصفقة -->
+            <div id="page-sync" class="page px-4 py-3 fade-in">
+                <div class="glass-card rounded-2xl p-6 text-center space-y-4">
+                    <i class="fas fa-handshake text-5xl text-crypto-blue mx-auto"></i>
+                    <h3 class="text-xl font-bold">مزامنة الصفقة</h3>
+                    <p style="color: var(--text-secondary);" class="text-sm">أدخل كود الطلب للمزامنة مع المتداول</p>
+                    <div class="mt-4">
+                        <input type="text" id="sync-order-code" class="profile-input text-center" placeholder="أدخل كود الطلب" dir="ltr">
+                    </div>
+                    <button id="sync-submit-btn" class="btn-primary w-full py-3 rounded-xl text-white font-semibold text-base shadow-lg flex items-center justify-center gap-2 mt-4">
+                        <i class="fas fa-sync-alt"></i> مزامنة الآن
+                    </button>
+                    <div id="sync-message" class="text-sm mt-2 hidden"></div>
+                </div>
+            </div>
+
+            <!-- صفحة المحفظة -->
+            <div id="page-wallet" class="page px-4 py-3 space-y-4 fade-in">
+                <div class="glass-card rounded-2xl p-5 bg-gradient-to-r from-crypto-blue to-purple-500 text-white">
+                    <p class="text-sm opacity-80 mb-1">الرصيد الإجمالي (تقديري)</p>
+                    <div class="text-3xl font-bold" id="wallet-page-total-balance">0.00 USDT</div>
+                    <div class="flex gap-2 mt-4">
+                        <button id="wallet-page-deposit-btn" class="bg-white/20 hover:bg-white/30 flex-1 py-2.5 rounded-xl text-white font-semibold text-sm backdrop-blur-sm"><i class="fas fa-arrow-down"></i> إيداع</button>
+                        <button id="wallet-page-withdraw-btn" class="bg-white/20 hover:bg-white/30 flex-1 py-2.5 rounded-xl text-white font-semibold text-sm backdrop-blur-sm"><i class="fas fa-arrow-up"></i> سحب</button>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4">
+                    <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-coins text-yellow-500"></i> عملاتي</h3>
+                    <div id="wallet-page-assets" class="divide-y" style="border-color: var(--border);"></div>
+                </div>
+                <div class="transfer-card glass-card rounded-2xl p-4">
+                    <div class="flex items-center gap-2 mb-4"><i class="fas fa-exchange-alt text-crypto-blue text-xl"></i><h3 class="text-lg font-bold">تحويل</h3></div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">العملة</label>
+                        <div class="asset-selector" id="transfer-asset-selector" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:8px;">
+                            <div class="asset-option active" data-asset="USDT" style="background:white; border:1px solid var(--border); border-radius:30px; padding:8px 16px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer;"><i class="fas fa-dollar-sign text-green-600"></i> USDT</div>
+                            <div class="asset-option" data-asset="BTC" style="background:white; border:1px solid var(--border); border-radius:30px; padding:8px 16px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer;"><i class="fab fa-bitcoin text-yellow-600"></i> BTC</div>
+                            <div class="asset-option" data-asset="ETH" style="background:white; border:1px solid var(--border); border-radius:30px; padding:8px 16px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer;"><i class="fab fa-ethereum text-purple-600"></i> ETH</div>
+                            <div class="asset-option" data-asset="SOL" style="background:white; border:1px solid var(--border); border-radius:30px; padding:8px 16px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer;"><i class="fas fa-sun text-orange-500"></i> SOL</div>
+                            <div class="asset-option" data-asset="APT" style="background:white; border:1px solid var(--border); border-radius:30px; padding:8px 16px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer;"><i class="fas fa-layer-group text-teal-500"></i> APT</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">الشبكة</label>
+                        <div class="flex gap-2">
+                            <button id="transfer-network-trc20" class="network-btn active-network flex-1 py-2 rounded-lg text-sm font-medium transition">TRC20</button>
+                            <button id="transfer-network-bep20" class="network-btn flex-1 py-2 rounded-lg text-sm font-medium transition">BEP20</button>
+                            <button id="transfer-network-erc20" class="network-btn flex-1 py-2 rounded-lg text-sm font-medium transition">ERC20</button>
+                            <button id="transfer-network-apt" class="network-btn flex-1 py-2 rounded-lg text-sm font-medium transition">APT</button>
+                        </div>
+                        <p class="warning-text flex items-center gap-1 mt-1" style="color:#f59e0b;font-size:0.75rem;"><i class="fas fa-exclamation-triangle"></i> تأكد من اختيار الشبكة المطابقة لعنوان المستلم.</p>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">عنوان المستلم</label>
+                        <input type="text" id="transfer-recipient" class="profile-input" placeholder="أدخل عنوان المحفظة">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">المبلغ</label>
+                        <div class="relative">
+                            <input type="number" id="transfer-amount" min="0.000001" step="0.000001" class="profile-input" placeholder="0.00">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm" style="color: var(--text-secondary);" id="transfer-asset-symbol">USDT</span>
+                        </div>
+                        <div class="flex justify-between mt-1">
+                            <span class="text-xs" style="color: var(--text-secondary);">المتاح: <span id="transfer-available">0.00</span> <span id="transfer-available-symbol">USDT</span></span>
+                            <button id="transfer-max-btn" class="text-xs text-crypto-blue font-medium">الحد الأقصى</button>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-xl mb-4" style="background: var(--input-bg);">
+                        <div class="flex justify-between text-sm"><span style="color: var(--text-secondary);">رسوم الشبكة</span><span class="font-medium" id="transfer-fee-amount">1.00 USDT</span></div>
+                        <div class="flex justify-between text-sm mt-1"><span style="color: var(--text-secondary);">المبلغ المستلم</span><span class="font-medium" id="transfer-receive-amount">0.00 USDT</span></div>
+                    </div>
+                    <button id="transfer-submit-btn" class="btn-primary w-full py-3.5 rounded-xl text-white font-semibold text-base shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> تأكيد التحويل
+                    </button>
+                    <div id="transfer-error" class="error-message hidden mt-2"></div>
+                </div>
+                <div class="glass-card rounded-xl p-4">
+                    <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-history text-gray-500"></i> آخر التحويلات</h3>
+                    <div id="transfer-history-list" class="space-y-2 text-sm max-h-60 overflow-y-auto">
+                        <p class="text-center py-2" style="color: var(--text-secondary);">لا توجد تحويلات حديثة</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- صفحة الحساب -->
+            <div id="page-account" class="page px-4 py-4 space-y-5 fade-in">
+                <div class="glass-card rounded-2xl p-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-crypto-blue to-purple-500 flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                            <span id="account-avatar-letter">U</span>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold" id="account-fullname">---</h2>
+                            <p class="text-sm flex items-center gap-1" id="account-email" style="color: var(--text-secondary);"><i class="fas fa-envelope text-xs"></i> ---</p>
+                            <p class="text-xs mt-1" style="color: var(--text-secondary);"><i class="far fa-calendar-alt"></i> عضو منذ <span id="account-join-date">2024</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5">
+                    <div class="flex items-center justify-between">
+                        <span style="color: var(--text-secondary);"><i class="fas fa-coins text-crypto-blue ml-1"></i> الرصيد الإجمالي</span>
+                        <span class="text-3xl font-bold" id="account-balance">0.00 USDT</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button id="account-deposit-btn" class="btn-primary flex-1 py-2.5 rounded-xl text-white font-semibold text-sm"><i class="fas fa-plus-circle"></i> إيداع</button>
+                        <button id="account-withdraw-btn" class="flex-1 py-2.5 rounded-xl border font-semibold text-sm" style="border-color: var(--border); color: var(--text-secondary);"><i class="fas fa-minus-circle"></i> سحب</button>
+                    </div>
+                </div>
+                <!-- خانة رمز الإحالة -->
+                <div class="glass-card rounded-2xl p-4">
+                    <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-users text-purple-500"></i> رمز الإحالة</h3>
+                    <p class="text-sm mb-3" style="color: var(--text-secondary);">رمز الإحالة الخاص بك لمشاركته مع الأصدقاء وكسب المكافآت.</p>
+                    <div class="flex items-center gap-2 p-3 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);">
+                        <code class="text-lg font-mono font-bold flex-1 text-center" id="referral-code-display" style="color: var(--text); letter-spacing: 2px;">------</code>
+                        <button id="copy-referral-code-btn" class="p-2 rounded-lg text-crypto-blue hover:opacity-80 transition" style="background: var(--card); border: 1px solid var(--border);" title="نسخ رمز الإحالة"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-4">
+                    <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-chart-pie text-crypto-blue"></i> ملخص الحساب</h3>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="p-3 rounded-xl" style="background: var(--input-bg);">
+                            <span class="block text-xs mb-1" style="color: var(--text-secondary);"><i class="fas fa-download ml-1"></i> إجمالي الإيداعات</span>
+                            <span class="text-lg font-bold text-crypto-green" id="summary-deposits">0.00 USDT</span>
+                        </div>
+                        <div class="p-3 rounded-xl" style="background: var(--input-bg);">
+                            <span class="block text-xs mb-1" style="color: var(--text-secondary);"><i class="fas fa-upload ml-1"></i> إجمالي السحوبات</span>
+                            <span class="text-lg font-bold text-crypto-red" id="summary-withdrawals">0.00 USDT</span>
+                        </div>
+                        <div class="p-3 rounded-xl" style="background: var(--input-bg);">
+                            <span class="block text-xs mb-1" style="color: var(--text-secondary);"><i class="fas fa-exchange-alt ml-1"></i> عدد الصفقات</span>
+                            <span class="text-lg font-bold" id="summary-trades">0</span>
+                        </div>
+                        <div class="p-3 rounded-xl" style="background: var(--input-bg);">
+                            <span class="block text-xs mb-1" style="color: var(--text-secondary);"><i class="fas fa-clock ml-1"></i> آخر نشاط</span>
+                            <span class="text-sm font-medium" id="summary-last-active">اليوم</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-4">
+                    <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-history text-crypto-blue"></i> آخر العمليات</h3>
+                    <div id="transactions-list" class="space-y-2 text-sm max-h-60 overflow-y-auto"></div>
+                </div>
+                <div class="glass-card rounded-2xl p-4 space-y-3">
+                    <h3 class="font-bold flex items-center gap-2"><i class="fas fa-sliders-h text-crypto-blue"></i> الإعدادات</h3>
+                    <button id="change-password-btn" class="w-full flex items-center justify-between py-2 px-1 hover:bg-gray-50 rounded-lg transition">
+                        <span><i class="fas fa-key text-gray-500 ml-2"></i> تغيير كلمة المرور</span><i class="fas fa-chevron-left text-gray-400 text-xs"></i>
+                    </button>
+                    <button id="logout-btn-account" class="w-full flex items-center justify-between py-2 px-1 hover:bg-gray-50 rounded-lg transition text-crypto-red">
+                        <span><i class="fas fa-sign-out-alt ml-2"></i> تسجيل الخروج</span><i class="fas fa-chevron-left text-gray-400 text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- شريط التنقل السفلي -->
+            <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto px-2 py-2 flex items-center justify-around z-40 shadow-[0_-2px_10px_rgba(0,0,0,0.02)]" style="background: var(--glass-bg); border-top: 1px solid var(--border);">
+                <div class="bottom-nav-item active flex flex-col items-center" data-page="home"><i class="fas fa-home"></i><span class="text-[10px] mt-0.5">الرئيسية</span></div>
+                <div class="bottom-nav-item flex flex-col items-center" data-page="markets"><i class="fas fa-chart-bar"></i><span class="text-[10px] mt-0.5">الأسواق</span></div>
+                <div class="bottom-nav-item flex flex-col items-center" data-page="sync"><i class="fas fa-handshake"></i><span class="text-[10px] mt-0.5">التزامن</span></div>
+                <div class="bottom-nav-item flex flex-col items-center" data-page="wallet"><i class="fas fa-wallet"></i><span class="text-[10px] mt-0.5">المحفظة</span></div>
+                <div class="bottom-nav-item flex flex-col items-center" data-page="account"><i class="fas fa-user"></i><span class="text-[10px] mt-0.5">الحساب</span></div>
+            </div>
+        </div>
+
+        <!-- ========== الموديلات ========== -->
+        <!-- مودال الإيداع -->
+        <div id="deposit-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-sm rounded-2xl p-5 shadow-2xl" style="background: var(--card);">
+                <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fas fa-arrow-down text-crypto-green"></i> إيداع USDT</h3>
+                <p class="text-sm mb-3" style="color: var(--text-secondary);">اختر الشبكة ثم امسح الباركود أو انسخ العنوان</p>
+                <div class="flex gap-2 mb-3">
+                    <button id="network-trc20" class="network-btn active-network flex-1 py-2 rounded-lg text-sm font-medium transition">TRC20</button>
+                    <button id="network-bep20" class="network-btn flex-1 py-2 rounded-lg text-sm font-medium transition">BEP20 (BSC)</button>
+                </div>
+                <div class="flex justify-center my-4">
+                    <canvas id="deposit-qrcode" width="200" height="200" class="rounded-xl border shadow-sm" style="border-color: var(--border);"></canvas>
+                </div>
+                <div class="p-3 rounded-xl text-center border mb-3" style="background: var(--input-bg); border-color: var(--border);">
+                    <span class="text-xs block mb-1" style="color: var(--text-secondary);" id="network-label">عنوان المحفظة (TRC20)</span>
+                    <div class="flex items-center justify-between gap-2">
+                        <code class="text-sm font-mono break-all" id="deposit-address">TEs8eiNd3gdkqX3sxgc7mAuqJ2dx88ycZC</code>
+                        <button id="copy-address-btn" class="p-2 rounded-lg border text-crypto-blue hover:opacity-80 transition" style="background: var(--card); border-color: var(--border);"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="flex"><button id="cancel-deposit" class="w-full py-2.5 border rounded-xl" style="border-color: var(--border);">إلغاء</button></div>
+            </div>
+        </div>
+
+        <!-- مودال السحب -->
+        <div id="withdraw-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-sm rounded-2xl p-5 shadow-2xl" style="background: var(--card);">
+                <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fas fa-arrow-up text-crypto-red"></i> سحب USDT</h3>
+                <p class="text-sm mb-3" style="color: var(--text-secondary);">أدخل عنوان المحفظة الذي ترغب في السحب إليه وحدد الشبكة الصحيحة</p>
+                <div class="flex gap-2 mb-2">
+                    <button id="withdraw-network-trc20" class="network-btn active-network flex-1 py-2 rounded-lg text-sm font-medium transition">TRC20</button>
+                    <button id="withdraw-network-bep20" class="network-btn flex-1 py-2 rounded-lg text-sm font-medium transition">BEP20 (BSC)</button>
+                </div>
+                <p class="warning-text flex items-center gap-1 mb-3" style="color:#f59e0b;font-size:0.75rem;"><i class="fas fa-exclamation-triangle"></i> تأكد من اختيار الشبكة المطابقة لعنوان المستلم.</p>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);" id="withdraw-address-label">عنوان المحفظة (TRC20)</label>
+                    <input type="text" id="withdraw-address" class="profile-input" placeholder="أدخل عنوان المحفظة على شبكة TRC20">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">المبلغ (USDT)</label>
+                    <input type="number" id="withdraw-amount" min="0.01" step="0.01" class="profile-input" placeholder="الحد الأدنى 10 USDT">
+                    <div id="withdraw-error" class="error-message hidden"></div>
+                </div>
+                <div class="flex gap-3">
+                    <button id="cancel-withdraw" class="flex-1 py-2.5 border rounded-xl" style="border-color: var(--border);">إلغاء</button>
+                    <button id="confirm-withdraw" class="flex-1 btn-primary text-white py-2.5 rounded-xl">تأكيد السحب</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال تغيير كلمة المرور -->
+        <div id="password-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-sm rounded-2xl p-5 shadow-2xl" style="background: var(--card);">
+                <h3 class="text-lg font-bold mb-4">تغيير كلمة المرور</h3>
+                <div class="space-y-3">
+                    <input type="password" id="current-password" class="profile-input" placeholder="كلمة المرور الحالية">
+                    <input type="password" id="new-password" class="profile-input" placeholder="كلمة المرور الجديدة (6+ أحرف)">
+                    <input type="password" id="confirm-new-password" class="profile-input" placeholder="تأكيد الجديدة">
+                    <div id="password-error" class="error-message hidden"></div>
+                    <div id="password-success" class="success-message hidden"></div>
+                </div>
+                <div class="flex gap-3 mt-5">
+                    <button id="cancel-password" class="flex-1 py-2.5 border rounded-xl" style="border-color: var(--border);">إلغاء</button>
+                    <button id="save-password" class="flex-1 btn-primary text-white py-2.5 rounded-xl">حفظ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال أفضل 20 مزود إشارات -->
+        <div id="providers-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-md rounded-2xl p-4 shadow-2xl max-h-[85vh] overflow-y-auto no-scrollbar" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4 sticky top-0 py-2 z-10" style="background: var(--card);">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-trophy text-yellow-500"></i> أفضل 20 مزود إشارات</h3>
+                    <button id="close-providers-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <p class="text-sm mb-3" style="color: var(--text-secondary);">قائمة بأفضل مزودي الإشارات بناءً على الأداء خلال 30 يومًا.</p>
+                <div id="providers-list-container" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- مودال ترخيص المنصة -->
+        <div id="license-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-sm rounded-2xl p-5 shadow-2xl" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-certificate text-crypto-blue"></i> ترخيص المنصة</h3>
+                    <button id="close-license-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <div class="space-y-3 text-sm">
+                    <p><span class="font-bold">ForX</span> منصة مرخصة ومنظمة من قبل:</p>
+                    <div class="p-3 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);">
+                        <p class="font-bold">هيئة الخدمات المالية (FSA)</p>
+                        <p class="text-xs mt-1" style="color: var(--text-secondary);">رقم الترخيص: FSA-2024-0789-AB</p>
+                    </div>
+                    <p style="color: var(--text-secondary);">تخضع جميع العمليات للرقابة وفقاً لأعلى معايير الأمان والشفافية المالية.</p>
+                </div>
+                <div class="mt-5">
+                    <button id="close-license-btn" class="w-full py-2.5 rounded-xl font-medium transition" style="background: var(--input-bg);">حسناً</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال الأخبار الجديدة -->
+        <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-md rounded-2xl p-4 shadow-2xl max-h-[85vh] overflow-y-auto no-scrollbar" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4 sticky top-0 py-2 z-10" style="background: var(--card);">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-star text-yellow-500"></i> ما الجديد في ForX</h3>
+                    <button id="close-news-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <div class="space-y-4" id="news-content-container"></div>
+            </div>
+        </div>
+
+        <!-- مودال المحفظة الرقمية V-Wallet -->
+        <div id="wallet-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-md rounded-2xl p-4 shadow-2xl max-h-[85vh] overflow-y-auto no-scrollbar" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4 sticky top-0 py-2 z-10" style="background: var(--card);">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-credit-card text-purple-500"></i> محفظة ForX الرقمية</h3>
+                    <button id="close-wallet-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <div class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-5 text-white mb-4">
+                    <p class="text-sm opacity-80 mb-1">الرصيد الإجمالي (تقديري)</p>
+                    <div class="text-3xl font-bold" id="wallet-total-balance">0.00 USDT</div>
+                </div>
+                <div class="flex gap-3 mb-4">
+                    <button id="wallet-deposit-btn" class="flex-1 bg-crypto-blue text-white py-2.5 rounded-xl font-medium text-sm"><i class="fas fa-arrow-down"></i> إيداع</button>
+                    <button id="wallet-withdraw-btn" class="flex-1 border py-2.5 rounded-xl font-medium text-sm" style="border-color: var(--border); color: var(--text-secondary);"><i class="fas fa-arrow-up"></i> سحب</button>
+                    <button id="wallet-transfer-btn" class="flex-1 border py-2.5 rounded-xl font-medium text-sm" style="border-color: var(--border); color: var(--text-secondary);"><i class="fas fa-exchange-alt"></i> تحويل</button>
+                </div>
+                <div id="wallet-modal-assets" class="space-y-2"></div>
+                <div>
+                    <h4 class="font-bold mb-2 flex items-center gap-2"><i class="fas fa-history text-gray-500"></i> آخر العمليات</h4>
+                    <div id="wallet-transactions-list" class="space-y-2 text-sm max-h-40 overflow-y-auto"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال الدعوة (إحالة) - الرابط الجديد -->
+        <div id="invite-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-md rounded-2xl p-5 shadow-2xl max-h-[90vh] overflow-y-auto no-scrollbar" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4 sticky top-0 py-2 z-10" style="background: var(--card);">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-user-plus text-purple-500"></i> برنامج الإحالة</h3>
+                    <button id="close-invite-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+
+                <!-- بطاقة الإحصائيات - كل القيم صفر -->
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                    <div class="p-4 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);">
+                        <span class="text-xs" style="color: var(--text-secondary);"><i class="fas fa-users ml-1"></i> المدعوين</span>
+                        <div class="text-2xl font-bold mt-1" id="invite-referrals-count">0</div>
+                        <span class="text-xs" style="color: var(--text-secondary);" id="invite-active-count">0 نشط</span>
+                    </div>
+                    <div class="p-4 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);">
+                        <span class="text-xs" style="color: var(--text-secondary);"><i class="fas fa-coins ml-1"></i> المكافآت</span>
+                        <div class="text-2xl font-bold mt-1" id="invite-earnings">0.00 USDT</div>
+                        <span class="text-xs" style="color: var(--text-secondary);" id="invite-pending-earnings">0.00 قيد الانتظار</span>
+                    </div>
+                </div>
+
+                <!-- رابط الإحالة الجديد -->
+                <div class="p-4 rounded-xl border mb-4" style="background: var(--input-bg); border-color: var(--border);">
+                    <p class="font-bold text-sm mb-2">رابط الإحالة الخاص بك</p>
+                    <div class="flex items-center justify-between gap-2 p-2 rounded-lg border mb-3" style="background: var(--card); border-color: var(--border);">
+                        <code class="text-sm font-mono break-all flex-1" id="invite-link">https://exurs7app.github.io/ForX508/</code>
+                        <button id="copy-invite-link" class="p-2 rounded-lg text-crypto-blue hover:opacity-80 transition flex-shrink-0" style="background: var(--input-bg);"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <p class="text-xs" style="color: var(--text-secondary);">
+                        <i class="fas fa-gift text-yellow-500 ml-1"></i> اربح مكافآت عند دعوة أصدقائك. لم يتم تفعيل المكافآت بعد.
+                    </p>
+                </div>
+
+                <!-- قائمة المدعوين الأخيرة (فارغة) -->
+                <div>
+                    <h4 class="font-bold text-sm mb-3 flex items-center gap-2"><i class="fas fa-list text-gray-500"></i> آخر المدعوين</h4>
+                    <div id="invite-referrals-list" class="space-y-2 max-h-48 overflow-y-auto no-scrollbar">
+                        <p class="text-center py-3 text-sm" style="color: var(--text-secondary);">لا توجد دعوات بعد. شارك رابطك وابدأ الربح!</p>
+                    </div>
+                </div>
+
+                <button id="close-invite-btn" class="w-full mt-5 py-2.5 rounded-xl font-medium transition" style="background: var(--input-bg);">حسناً</button>
+            </div>
+        </div>
+
+        <!-- مودال تنبيهات الأسعار -->
+        <div id="alerts-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-md rounded-2xl p-4 shadow-2xl max-h-[80vh] overflow-y-auto no-scrollbar" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4 sticky top-0 py-2 z-10" style="background: var(--card);">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i class="fas fa-bell text-orange-400"></i> تنبيهات الأسعار</h3>
+                    <button id="close-alerts-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <div class="mb-4 p-3 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);">
+                    <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">إضافة تنبيه جديد</label>
+                    <div class="flex gap-2 mb-2">
+                        <select id="alert-symbol-select" class="profile-input flex-1" style="padding: 10px;">
+                            <option value="BTC">BTC/USDT</option>
+                            <option value="ETH">ETH/USDT</option>
+                            <option value="BNB">BNB/USDT</option>
+                            <option value="SOL">SOL/USDT</option>
+                            <option value="APT">APT/USDT</option>
+                        </select>
+                        <select id="alert-direction" class="profile-input" style="width: 100px; padding: 10px;">
+                            <option value="above">فوق</option>
+                            <option value="below">تحت</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="number" id="alert-price-input" class="profile-input flex-1" placeholder="السعر المستهدف" step="0.01">
+                        <button id="add-alert-btn" class="btn-primary text-white px-4 py-2 rounded-xl font-medium text-sm">إضافة</button>
+                    </div>
+                </div>
+                <div id="alerts-list-container" class="space-y-2">
+                    <p class="text-center py-2 text-sm" style="color: var(--text-secondary);">لا توجد تنبيهات نشطة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال التداول السريع -->
+        <div id="trade-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+            <div class="w-11/12 max-w-sm rounded-2xl p-5 shadow-2xl" style="background: var(--card);">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold flex items-center gap-2" id="trade-modal-title"><i class="fas fa-chart-line"></i> تداول سريع</h3>
+                    <button id="close-trade-modal" class="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80" style="background: var(--input-bg);"><i class="fas fa-times" style="color: var(--text-secondary);"></i></button>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">الزوج</label>
+                    <input type="text" id="trade-pair" class="profile-input" readonly value="BTC/USDT">
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">السعر الحالي</label>
+                    <input type="text" id="trade-price" class="profile-input" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1" style="color: var(--text-secondary);">الكمية</label>
+                    <input type="number" id="trade-amount" class="profile-input" placeholder="0.00" step="0.0001" min="0.0001">
+                </div>
+                <div class="mb-4 p-3 rounded-xl" style="background: var(--input-bg);">
+                    <div class="flex justify-between text-sm"><span style="color: var(--text-secondary);">القيمة الإجمالية</span><span class="font-bold" id="trade-total-value">0.00 USDT</span></div>
+                    <div class="flex justify-between text-sm mt-1"><span style="color: var(--text-secondary);">الرصيد المتاح</span><span id="trade-available-balance">0.00 USDT</span></div>
+                </div>
+                <div id="trade-error" class="error-message hidden mb-3"></div>
+                <div class="flex gap-3">
+                    <button id="confirm-buy-trade" class="trade-btn-buy flex items-center justify-center gap-2"><i class="fas fa-arrow-up"></i> شراء</button>
+                    <button id="confirm-sell-trade" class="trade-btn-sell flex items-center justify-center gap-2"><i class="fas fa-arrow-down"></i> بيع</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ==================== توليد أيقونات PNG حقيقية للتثبيت في درج التطبيقات ====================
+            function generatePNGIcon(size) {
+                var canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                var ctx = canvas.getContext('2d');
+
+                var radius = size * 0.195;
+                ctx.beginPath();
+                ctx.moveTo(radius, 0);
+                ctx.lineTo(size - radius, 0);
+                ctx.quadraticCurveTo(size, 0, size, radius);
+                ctx.lineTo(size, size - radius);
+                ctx.quadraticCurveTo(size, size, size - radius, size);
+                ctx.lineTo(radius, size);
+                ctx.quadraticCurveTo(0, size, 0, size - radius);
+                ctx.lineTo(0, radius);
+                ctx.quadraticCurveTo(0, 0, radius, 0);
+                ctx.closePath();
+                ctx.fillStyle = '#3772ff';
+                ctx.fill();
+
+                var cx = size / 2;
+                var cy = size / 2;
+                var s = size * 0.28;
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.moveTo(cx - s * 0.12, cy - s * 1.05);
+                ctx.lineTo(cx + s * 0.55, cy - s * 0.25);
+                ctx.lineTo(cx - s * 0.15, cy - s * 0.15);
+                ctx.lineTo(cx + s * 0.08, cy + s * 1.05);
+                ctx.lineTo(cx - s * 0.55, cy + s * 0.35);
+                ctx.lineTo(cx + s * 0.15, cy + s * 0.08);
+                ctx.lineTo(cx - s * 0.08, cy - s * 1.05);
+                ctx.closePath();
+                ctx.fill();
+
+                return canvas.toDataURL('image/png');
+            }
+
+            var pngIcon192 = generatePNGIcon(192);
+            var pngIcon512 = generatePNGIcon(512);
+
+            // ==================== إنشاء بيان التطبيق (Manifest) بشكل دائم ====================
+            function createAndAttachManifest() {
+                var manifestData = {
+                    name: "ForX - تداول العملات الرقمية",
+                    short_name: "ForX",
+                    description: "منصة تداول العملات الرقمية ForX - تداول آمن وسريع",
+                    theme_color: "#3772ff",
+                    background_color: "#f8fafc",
+                    display: "standalone",
+                    orientation: "portrait",
+                    scope: "./",
+                    start_url: "./",
+                    lang: "ar",
+                    dir: "rtl",
+                    icons: [{
+                        src: pngIcon192,
+                        sizes: "192x192",
+                        type: "image/png",
+                        purpose: "any maskable"
+                    }, {
+                        src: pngIcon512,
+                        sizes: "512x512",
+                        type: "image/png",
+                        purpose: "any maskable"
+                    }]
+                };
+
+                var manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+                var manifestUrl = URL.createObjectURL(manifestBlob);
+
+                var existingLink = document.querySelector('link[rel="manifest"]');
+                if (existingLink) existingLink.remove();
+
+                var linkEl = document.createElement('link');
+                linkEl.rel = 'manifest';
+                linkEl.href = manifestUrl;
+                linkEl.id = 'pwa-manifest-dynamic';
+                document.head.appendChild(linkEl);
+
+                window._forxManifestUrl = manifestUrl;
+                window._forxManifestBlob = manifestBlob;
+                return manifestUrl;
+            }
+
+            // ==================== تسجيل Service Worker ====================
+            function registerServiceWorker() {
+                if (!('serviceWorker' in navigator)) return;
+                var swCode = [
+                    'var CACHE_NAME = "forx-pwa-v5";',
+                    'var urlsToCache = ["./"];',
+                    'self.addEventListener("install", function(e) {',
+                    '  e.waitUntil(',
+                    '    caches.open(CACHE_NAME).then(function(cache) {',
+                    '      return cache.addAll(urlsToCache).catch(function() {});',
+                    '    })',
+                    '  );',
+                    '  self.skipWaiting();',
+                    '});',
+                    'self.addEventListener("activate", function(e) {',
+                    '  e.waitUntil(',
+                    '    caches.keys().then(function(keys) {',
+                    '      return Promise.all(keys.map(function(k) {',
+                    '        if (k !== CACHE_NAME) return caches.delete(k);',
+                    '      }));',
+                    '    })',
+                    '  );',
+                    '  clients.claim();',
+                    '});',
+                    'self.addEventListener("fetch", function(e) {',
+                    '  if (e.request.method !== "GET") return;',
+                    '  e.respondWith(',
+                    '    caches.match(e.request).then(function(r) {',
+                    '      return r || fetch(e.request).then(function(resp) {',
+                    '        var r2 = resp.clone();',
+                    '        caches.open(CACHE_NAME).then(function(c) {',
+                    '          c.put(e.request, r2);',
+                    '        });',
+                    '        return resp;',
+                    '      }).catch(function() {',
+                    '        return caches.match("./");',
+                    '      });',
+                    '    })',
+                    '  );',
+                    '});'
+                ].join('\n');
+                var swBlob = new Blob([swCode], { type: 'application/javascript' });
+                var swUrl = URL.createObjectURL(swBlob);
+                navigator.serviceWorker.register(swUrl, { scope: './' }).then(function(reg) {
+                    console.log('✅ Service Worker مسجل بنجاح');
+                }).catch(function(err) {
+                    console.warn('⚠️ تعذر تسجيل Service Worker:', err);
+                });
+                window._forxSwUrl = swUrl;
+                window._forxSwBlob = swBlob;
+            }
+
+            // ==================== دوال مساعدة ====================
+            function showToast(msg, isError) {
+                isError = isError || false;
+                var toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.style.background = isError ? '#f84960' : '#1e293b';
+                toast.textContent = msg;
+                document.body.appendChild(toast);
+                setTimeout(function() { toast.remove(); }, 3000);
+            }
+
+            // ==================== إدارة الوضع الليلي ====================
+            function initDarkMode() {
+                var saved = localStorage.getItem('forx-dark-mode');
+                if (saved === 'true') {
+                    document.documentElement.classList.add('dark');
+                    updateDarkModeIcons(true);
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateDarkModeIcons(false);
+                }
+            }
+
+            function toggleDarkMode() {
+                var isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('forx-dark-mode', isDark);
+                updateDarkModeIcons(isDark);
+                showToast(isDark ? '🌙 تم تفعيل الوضع الليلي' : '☀️ تم تفعيل الوضع النهاري');
+            }
+
+            function updateDarkModeIcons(isDark) {
+                var icons = document.querySelectorAll('.dark-mode-toggle i');
+                icons.forEach(function(icon) {
+                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                });
+            }
+
+            initDarkMode();
+            document.getElementById('dark-mode-toggle-auth').addEventListener('click', toggleDarkMode);
+            document.getElementById('dark-mode-toggle-main').addEventListener('click', toggleDarkMode);
+
+            // ==================== إعداد PWA ====================
+            var deferredPrompt = null;
+            var isAppInstalled = false;
+
+            function checkInstallState() {
+                return window.matchMedia('(display-mode: standalone)').matches ||
+                    window.navigator.standalone === true ||
+                    document.referrer.includes('android-app://');
+            }
+            isAppInstalled = checkInstallState();
+
+            var installIconAuth = document.getElementById('install-icon-auth');
+            var installIconMain = document.getElementById('install-icon-main');
+            var allInstallIcons = [installIconAuth, installIconMain].filter(Boolean);
+
+            function showInstallIcons() {
+                if (isAppInstalled) return;
+                if (deferredPrompt || isInstallableBrowser()) {
+                    allInstallIcons.forEach(function(icon) {
+                        if (icon) icon.classList.remove('hidden');
+                    });
+                }
+            }
+
+            function hideInstallIcons() {
+                allInstallIcons.forEach(function(icon) {
+                    if (icon) icon.classList.add('hidden');
+                });
+            }
+
+            function isInstallableBrowser() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.includes('chrome') || ua.includes('edge') || ua.includes('samsung')) return true;
+                if (ua.includes('safari') && !ua.includes('chrome') && /iphone|ipad|ipod/.test(ua)) return true;
+                if (ua.includes('firefox') && /android/.test(ua)) return true;
+                return false;
+            }
+
+            async function handleInstallClick() {
+                if (isAppInstalled) { showToast('✅ التطبيق مثبت بالفعل');
+                    hideInstallIcons(); return; }
+                if (deferredPrompt) {
+                    try {
+                        await deferredPrompt.prompt();
+                        var choiceResult = await deferredPrompt.userChoice;
+                        deferredPrompt = null;
+                        if (choiceResult.outcome === 'accepted') {
+                            isAppInstalled = true;
+                            hideInstallIcons();
+                            showToast('🎉 تم تثبيت ForX في درج التطبيقات!');
+                        } else {
+                            showToast('تم إلغاء التثبيت');
+                        }
+                    } catch (err) {
+                        showInstallGuide();
+                    }
+                } else {
+                    showInstallGuide();
+                }
+            }
+
+            function showInstallGuide() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.includes('chrome') || ua.includes('edge') || ua.includes('samsung'))
+                    showToast('📱 من قائمة المتصفح: ⋮ > تثبيت التطبيق أو إضافة إلى الشاشة الرئيسية');
+                else if (ua.includes('safari') && /iphone|ipad|ipod/.test(ua))
+                    showToast('📱 من شريط الأدوات: ↑ > إضافة إلى الشاشة الرئيسية');
+                else
+                    showToast('📱 استخدم قائمة المتصفح > تثبيت التطبيق');
+            }
+
+            function setupPWA() {
+                createAndAttachManifest();
+                registerServiceWorker();
+
+                window.addEventListener('beforeinstallprompt', function(e) {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    if (!isAppInstalled) showInstallIcons();
+                });
+
+                window.addEventListener('appinstalled', function() {
+                    isAppInstalled = true;
+                    deferredPrompt = null;
+                    hideInstallIcons();
+                    showToast('🎉 تم تثبيت ForX بنجاح في درج التطبيقات!');
+                });
+
+                allInstallIcons.forEach(function(icon) {
+                    if (icon) icon.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        handleInstallClick();
+                    });
+                });
+
+                setTimeout(function() {
+                    if (!isAppInstalled && !deferredPrompt && isInstallableBrowser())
+                        showInstallIcons();
+                }, 2500);
+            }
+
+            // تنفيذ إعداد PWA فوراً
+            setupPWA();
+
+            // ==================== إدارة المستخدمين والجلسة ====================
+            var STORAGE_KEY = 'forx_users_db_v2';
+            var SESSION_KEY = 'forx_current_user';
+
+            function generateReferralCode(email) {
+                var base = email.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+                var randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+                return 'FX-' + base.substring(0, 6) + '-' + randomPart;
+            }
+
+            function initDB() {
+                if (!localStorage.getItem(STORAGE_KEY)) {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify([{
+                        fullName: 'متداول تجريبي',
+                        email: 'demo@forx.com',
+                        password: btoa('demo1234'),
+                        balance: 0,
+                        btcBalance: 0,
+                        ethBalance: 0,
+                        solBalance: 0,
+                        aptBalance: 0,
+                        transactions: [],
+                        priceAlerts: [],
+                        trades: [],
+                        joinDate: new Date().toISOString().split('T')[0],
+                        referralCode: 'FX-DEMO-AB12',
+                        referredUsers: [],
+                        referralEarnings: 0,
+                        pendingEarnings: 0
+                    }]));
+                } else {
+                    var users = getUsers();
+                    var updated = false;
+                    users.forEach(function(u) {
+                        if (!u.referralCode) {
+                            u.referralCode = generateReferralCode(u.email);
+                            updated = true;
+                        }
+                        if ((u.balance || 0) !== 0 || (u.btcBalance || 0) !== 0 || (u.ethBalance || 0) !==
+                            0 || (u.solBalance || 0) !== 0 || (u.aptBalance || 0) !== 0) {
+                            u.balance = 0;
+                            u.btcBalance = 0;
+                            u.ethBalance = 0;
+                            u.solBalance = 0;
+                            u.aptBalance = 0;
+                            updated = true;
+                        }
+                        if (!u.referredUsers) { u.referredUsers = [];
+                            updated = true; }
+                        if (u.referralEarnings === undefined) { u.referralEarnings = 0;
+                            updated = true; }
+                        if (u.pendingEarnings === undefined) { u.pendingEarnings = 0;
+                            updated = true; }
+                        if (u.aptBalance === undefined) { u.aptBalance = 0;
+                            updated = true; }
+                    });
+                    if (updated) saveUsers(users);
+                }
+            }
+            initDB();
+
+            function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+
+            function saveUsers(users) { localStorage.setItem(STORAGE_KEY, JSON.stringify(users)); }
+
+            function findUserByEmail(email) { return getUsers().find(function(u) { return u.email.toLowerCase() ===
+                    email.toLowerCase(); }); }
+
+            function updateUser(email, updates) {
+                var users = getUsers();
+                var idx = users.findIndex(function(u) { return u.email === email; });
+                if (idx !== -1) { users[idx] = Object.assign({}, users[idx], updates);
+                    saveUsers(users); return users[idx]; }
+                return null;
+            }
+
+            function getCurrentUser() {
+                var session = JSON.parse(localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) ||
+                    'null');
+                if (session) return findUserByEmail(session.email);
+                return null;
+            }
+
+            function setSession(user, remember) {
+                var session = { email: user.email, fullName: user.fullName, loggedAt: Date.now() };
+                if (remember) localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+                else sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+            }
+
+            function clearSession() { localStorage.removeItem(SESSION_KEY);
+                sessionStorage.removeItem(SESSION_KEY); }
+
+            // ==================== متغيرات الواجهة ====================
+            var authScreen = document.getElementById('auth-screen');
+            var mainScreen = document.getElementById('main-screen');
+            var displayUsername = document.getElementById('display-username');
+            var pages = {
+                home: document.getElementById('page-home'),
+                markets: document.getElementById('page-markets'),
+                sync: document.getElementById('page-sync'),
+                wallet: document.getElementById('page-wallet'),
+                account: document.getElementById('page-account')
+            };
+            var navItems = document.querySelectorAll('.bottom-nav-item');
+
+            // ==================== نظام تنبيهات الأسعار ====================
+            var userPriceAlerts = [];
+
+            function loadPriceAlerts() {
+                var user = getCurrentUser();
+                userPriceAlerts = user ? (user.priceAlerts || []) : [];
+                renderPriceAlerts();
+                updateAlertBadge();
+            }
+
+            function savePriceAlerts() {
+                var user = getCurrentUser();
+                if (!user) return;
+                updateUser(user.email, { priceAlerts: userPriceAlerts });
+            }
+
+            function addPriceAlert(symbol, direction, price) {
+                userPriceAlerts.push({ id: Date.now(), symbol: symbol, direction: direction, price: price, triggered: false });
+                savePriceAlerts();
+                renderPriceAlerts();
+                updateAlertBadge();
+                showToast('تم إضافة تنبيه لـ ' + symbol + ' عند ' + price);
+            }
+
+            function removeAlert(id) {
+                userPriceAlerts = userPriceAlerts.filter(function(a) { return a.id !== id; });
+                savePriceAlerts();
+                renderPriceAlerts();
+                updateAlertBadge();
+            }
+
+            function renderPriceAlerts() {
+                var container = document.getElementById('alerts-list-container');
+                if (userPriceAlerts.length === 0) {
+                    container.innerHTML = '<p class="text-center py-2 text-sm" style="color: var(--text-secondary);">لا توجد تنبيهات نشطة</p>';
+                    return;
+                }
+                container.innerHTML = userPriceAlerts.map(function(a) {
+                    return '<div class="price-alert-item"><div><span class="font-bold">' + a.symbol +
+                        '/USDT</span><span class="text-xs mx-2" style="color:var(--text-secondary);">' + (a.direction ===
+                            'above' ? 'فوق' : 'تحت') + '</span><span class="font-mono font-bold">' + a.price +
+                        '</span></div><button onclick="removeAlertById(' + a.id + ')" class="text-crypto-red text-xs p-1"><i class="fas fa-trash"></i></button></div>';
+                }).join('');
+            }
+
+            window.removeAlertById = function(id) { removeAlert(id); };
+
+            function updateAlertBadge() {
+                var badge = document.getElementById('alert-count-badge');
+                var count = userPriceAlerts.filter(function(a) { return !a.triggered; }).length;
+                if (count > 0) { badge.textContent = count;
+                    badge.classList.remove('hidden'); } else { badge.classList.add('hidden'); }
+            }
+
+            function checkPriceAlerts(prices) {
+                var triggered = false;
+                userPriceAlerts.forEach(function(alert) {
+                    if (alert.triggered) return;
+                    var price = prices[alert.symbol];
+                    if (!price) return;
+                    if (alert.direction === 'above' && price >= alert.price) {
+                        showToast('🔔 تنبيه: ' + alert.symbol + ' وصل إلى ' + price.toFixed(2));
+                        alert.triggered = true;
+                        triggered = true;
+                    } else if (alert.direction === 'below' && price <= alert.price) {
+                        showToast('🔔 تنبيه: ' + alert.symbol + ' انخفض إلى ' + price.toFixed(2));
+                        alert.triggered = true;
+                        triggered = true;
+                    }
+                });
+                if (triggered) { savePriceAlerts();
+                    updateAlertBadge(); }
+            }
+
+            // ==================== بيانات الرسم البياني والأسواق ====================
+            // *** التعديل الرئيسي: توسيع قائمة العملات مع بيانات واقعية ***
+            var symbols = [
+                { id: 'BTC',  name: 'Bitcoin',    icon: 'fab fa-bitcoin text-yellow-500',    basePrice: 68245.50, volatility: 0.005, volume24h: 31.2, marketCap: 1345.8, rank: 1,  supply: 19.7,  dominance: 52.4 },
+                { id: 'ETH',  name: 'Ethereum',   icon: 'fab fa-ethereum text-purple-500',   basePrice: 3421.80,  volatility: 0.008, volume24h: 18.7, marketCap: 411.2,  rank: 2,  supply: 120.2, dominance: 16.0 },
+                { id: 'BNB',  name: 'BNB',        icon: 'fas fa-coins text-yellow-500',      basePrice: 602.10,   volatility: 0.006, volume24h: 2.1,  marketCap: 87.6,   rank: 4,  supply: 145.5, dominance: 3.4 },
+                { id: 'SOL',  name: 'Solana',     icon: 'fas fa-sun text-orange-400',        basePrice: 172.35,   volatility: 0.012, volume24h: 4.8,  marketCap: 79.4,   rank: 5,  supply: 460.8, dominance: 3.1 },
+                { id: 'XRP',  name: 'Ripple',     icon: 'fas fa-water text-blue-400',        basePrice: 2.45,     volatility: 0.010, volume24h: 5.3,  marketCap: 135.7,  rank: 3,  supply: 55400, dominance: 5.3 },
+                { id: 'ADA',  name: 'Cardano',    icon: 'fas fa-circle text-blue-500',       basePrice: 0.85,     volatility: 0.015, volume24h: 0.9,  marketCap: 29.8,   rank: 9,  supply: 35100, dominance: 1.2 },
+                { id: 'APT',  name: 'Aptos',      icon: 'fas fa-layer-group text-teal-500',  basePrice: 9.50,     volatility: 0.014, volume24h: 0.5,  marketCap: 3.9,    rank: 32, supply: 410,   dominance: 0.15 },
+                { id: 'DOGE', name: 'Dogecoin',   icon: 'fas fa-dog text-yellow-600',        basePrice: 0.182,    volatility: 0.018, volume24h: 1.4,  marketCap: 26.2,   rank: 8,  supply: 144000,dominance: 1.0 },
+                { id: 'AVAX', name: 'Avalanche',  icon: 'fas fa-mountain text-red-500',      basePrice: 38.75,    volatility: 0.013, volume24h: 0.8,  marketCap: 15.9,   rank: 11, supply: 410,   dominance: 0.62 },
+                { id: 'DOT',  name: 'Polkadot',   icon: 'fas fa-circle-dot text-pink-500',   basePrice: 9.12,     volatility: 0.011, volume24h: 0.6,  marketCap: 12.3,   rank: 14, supply: 1350,  dominance: 0.48 },
+                { id: 'LINK', name: 'Chainlink',  icon: 'fas fa-link text-blue-600',         basePrice: 18.45,    volatility: 0.013, volume24h: 0.9,  marketCap: 11.1,   rank: 15, supply: 600,   dominance: 0.43 },
+                { id: 'ATOM', name: 'Cosmos',     icon: 'fas fa-atom text-indigo-500',       basePrice: 9.87,     volatility: 0.012, volume24h: 0.4,  marketCap: 3.8,    rank: 33, supply: 390,   dominance: 0.15 },
+                { id: 'LTC',  name: 'Litecoin',   icon: 'fas fa-coins text-gray-400',        basePrice: 87.30,    volatility: 0.009, volume24h: 0.7,  marketCap: 6.5,    rank: 22, supply: 74.5,  dominance: 0.25 },
+                { id: 'TRX',  name: 'TRON',       icon: 'fas fa-play text-red-400',          basePrice: 0.127,    volatility: 0.010, volume24h: 1.2,  marketCap: 11.0,   rank: 16, supply: 86700, dominance: 0.42 },
+                { id: 'UNI',  name: 'Uniswap',    icon: 'fas fa-exchange-alt text-pink-400', basePrice: 11.23,    volatility: 0.014, volume24h: 0.3,  marketCap: 6.7,    rank: 21, supply: 600,   dominance: 0.26 }
+            ];
+
+            // إحصائيات ثابتة نسبيًا لكل عملة (تتغير ببطء لمحاكاة الواقع)
+            var marketStats = {};
+            symbols.forEach(function(s){
+                // 7-day sparkline (24 نقطة)
+                var spark = [], v = s.basePrice;
+                for (var i=0;i<24;i++){ v = v * (1 + (Math.random()-0.5)*s.volatility*2); spark.push(v); }
+                marketStats[s.id] = {
+                    price: s.basePrice,
+                    change24h: (Math.random()*10 - 4),       // %
+                    change7d:  (Math.random()*20 - 8),
+                    high24: s.basePrice * (1 + Math.random()*0.04 + 0.005),
+                    low24:  s.basePrice * (1 - Math.random()*0.04 - 0.005),
+                    vol24:  s.volume24h * (0.85 + Math.random()*0.3),
+                    spark: spark
+                };
+            });
+
+            var currentSymbol = symbols[0];
+            var marketChartData = [];
+            var currentTf = '1D';
+            var simulationInterval = null;
+            var chartScale = 1.0, chartOffsetX = 0;
+            var canvas = document.getElementById('candlestick-chart');
+            var ctx = canvas.getContext('2d');
+            var tooltip = document.getElementById('chart-tooltip');
+            var crosshair = { active: false, x: 0, y: 0 };
+
+            function generateInitialCandles(count, basePrice, volatility) {
+                var data = [];
+                var close = basePrice;
+                var t = Date.now() - count * 60000;
+                for (var i = 0; i < count; i++) {
+                    var open = close;
+                    var change = (Math.random() - 0.5) * volatility * basePrice;
+                    close = Math.max(open + change, basePrice * 0.7);
+                    var high = Math.max(open, close) + Math.random() * volatility * basePrice;
+                    var low  = Math.min(open, close) - Math.random() * volatility * basePrice;
+                    var vol  = (0.5 + Math.random()) * basePrice * volatility * 100;
+                    data.push({ open: open, high: high, low: low, close: close, volume: vol, time: t + i*60000 });
+                }
+                return data;
+            }
+
+            function updateMarketSimulation() {
+                if (!marketChartData.length) return;
+                var last = marketChartData[marketChartData.length - 1];
+                var volatility = currentSymbol.volatility * currentSymbol.basePrice;
+                var change = (Math.random() - 0.5) * volatility;
+                var newClose = Math.max(last.close + change, currentSymbol.basePrice * 0.5);
+                last.close = newClose;
+                last.high = Math.max(last.high, newClose + Math.random() * volatility * 0.3);
+                last.low  = Math.min(last.low,  newClose - Math.random() * volatility * 0.3);
+                last.volume += Math.random() * volatility * 20;
+                if (Math.random() < 0.2) {
+                    marketChartData.push({
+                        open: last.close,
+                        high: last.close + Math.random() * volatility * 0.5,
+                        low:  last.close - Math.random() * volatility * 0.5,
+                        close: last.close + (Math.random() - 0.5) * volatility,
+                        volume: (0.5+Math.random()) * volatility * 100,
+                        time: (last.time||Date.now()) + 60000
+                    });
+                    if (marketChartData.length > 60) marketChartData.shift();
+                }
+                // تحديث إحصائيات بقية العملات بانسيابية
+                symbols.forEach(function(s){
+                    if (s.id === currentSymbol.id) return;
+                    var st = marketStats[s.id];
+                    st.price = st.price * (1 + (Math.random()-0.5)*s.volatility*0.4);
+                    st.change24h += (Math.random()-0.5)*0.08;
+                    st.change24h = Math.max(-15, Math.min(15, st.change24h));
+                    st.spark.push(st.price); if (st.spark.length>24) st.spark.shift();
+                    st.high24 = Math.max(st.high24, st.price);
+                    st.low24  = Math.min(st.low24,  st.price);
+                    st.vol24 += Math.random()*0.005;
+                });
+                // العملة الحالية
+                var cs = marketStats[currentSymbol.id];
+                cs.price = newClose;
+                cs.spark.push(newClose); if (cs.spark.length>24) cs.spark.shift();
+                cs.high24 = Math.max(cs.high24, newClose);
+                cs.low24  = Math.min(cs.low24,  newClose);
+                drawChart();
+                updatePriceDisplay();
+                updateTopMarkets();
+                checkPriceAlertsFromMarket();
+            }
+
+            function checkPriceAlertsFromMarket() {
+                var prices = {};
+                symbols.forEach(function(s) { prices[s.id] = marketStats[s.id].price; });
+                checkPriceAlerts(prices);
+            }
+
+            // ========= رسم بياني عصري =========
+            function drawChart() {
+                if (!marketChartData.length) return;
+                var isDark = document.documentElement.classList.contains('dark');
+                var w = canvas.clientWidth || 400;
+                var h = 260;
+                var dpr = window.devicePixelRatio || 1;
+                canvas.width  = w * dpr;
+                canvas.height = h * dpr;
+                canvas.style.height = h + 'px';
+                ctx.setTransform(dpr,0,0,dpr,0,0);
+
+                var padding = { top: 14, bottom: 22, left: 8, right: 58 };
+                var volH = 42;   // ارتفاع منطقة الحجم
+                var graphWidth  = w - padding.left - padding.right;
+                var graphHeight = h - padding.top - padding.bottom - volH - 6;
+
+                var visibleCount = Math.floor(marketChartData.length / chartScale);
+                var startIndex = Math.max(0, Math.min(marketChartData.length - visibleCount, Math.floor(chartOffsetX / 100 * marketChartData.length)));
+                var endIndex = Math.min(marketChartData.length, startIndex + visibleCount);
+                var visibleData = marketChartData.slice(startIndex, endIndex);
+                if (!visibleData.length) return;
+
+                var maxPrice = -Infinity, minPrice = Infinity, maxVol = 0;
+                visibleData.forEach(function(d){
+                    if (d.high>maxPrice) maxPrice=d.high;
+                    if (d.low<minPrice)  minPrice=d.low;
+                    if (d.volume>maxVol) maxVol=d.volume;
+                });
+                var pad = (maxPrice-minPrice)*0.08 || maxPrice*0.01;
+                maxPrice += pad; minPrice -= pad;
+                var priceRange = maxPrice - minPrice || 1;
+
+                ctx.clearRect(0,0,w,h);
+
+                // خلفية متدرجة
+                var bg = ctx.createLinearGradient(0,0,0,h);
+                if (isDark) {
+                    bg.addColorStop(0, 'rgba(55,114,255,0.05)');
+                    bg.addColorStop(1, 'rgba(0,0,0,0)');
+                } else {
+                    bg.addColorStop(0, 'rgba(55,114,255,0.04)');
+                    bg.addColorStop(1, 'rgba(255,255,255,0)');
+                }
+                ctx.fillStyle = bg;
+                ctx.fillRect(0,0,w,h);
+
+                // شبكة أفقية متقطعة
+                ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.06)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([3,4]);
+                ctx.fillStyle = isDark ? '#94a3b8' : '#64748b';
+                ctx.font = '10px Cairo, sans-serif';
+                ctx.textAlign = 'left';
+                var gridLines = 5;
+                for (var i=0;i<=gridLines;i++){
+                    var price = maxPrice - (i/gridLines)*priceRange;
+                    var y = padding.top + (i/gridLines)*graphHeight;
+                    ctx.beginPath(); ctx.moveTo(padding.left, y); ctx.lineTo(padding.left+graphWidth, y); ctx.stroke();
+                    ctx.fillText(formatPrice(price), padding.left+graphWidth+5, y+3);
+                }
+                ctx.setLineDash([]);
+
+                var candleWidth = Math.max(2.5, (graphWidth / visibleData.length) * 0.62);
+                var slot = graphWidth / visibleData.length;
+
+                // منطقة الحجم
+                var volTop = padding.top + graphHeight + 6;
+                visibleData.forEach(function(d, i){
+                    var x = padding.left + i*slot + (slot-candleWidth)/2;
+                    var vh = maxVol>0 ? (d.volume/maxVol)*volH : 0;
+                    var up = d.close >= d.open;
+                    ctx.fillStyle = up ? 'rgba(2,192,118,0.35)' : 'rgba(248,73,96,0.35)';
+                    ctx.fillRect(x, volTop+volH-vh, candleWidth, vh);
+                });
+
+                // خط متوسط متحرك MA(7) على منطقة السعر
+                if (visibleData.length>=7){
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#f59e0b';
+                    ctx.lineWidth = 1.4;
+                    for (var i=6;i<visibleData.length;i++){
+                        var sum=0; for (var j=i-6;j<=i;j++) sum+=visibleData[j].close;
+                        var ma = sum/7;
+                        var x = padding.left + i*slot + slot/2;
+                        var y = padding.top + ((maxPrice-ma)/priceRange)*graphHeight;
+                        if (i===6) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+                    }
+                    ctx.stroke();
+                }
+
+                // شموع عصرية برؤوس مدورة وتوهج
+                visibleData.forEach(function(d, i){
+                    var x = padding.left + i*slot + (slot-candleWidth)/2;
+                    var yHigh  = padding.top + ((maxPrice-d.high)/priceRange)*graphHeight;
+                    var yLow   = padding.top + ((maxPrice-d.low)/priceRange)*graphHeight;
+                    var yOpen  = padding.top + ((maxPrice-d.open)/priceRange)*graphHeight;
+                    var yClose = padding.top + ((maxPrice-d.close)/priceRange)*graphHeight;
+                    var up = d.close >= d.open;
+                    var color = up ? '#02c076' : '#f84960';
+                    var glow  = up ? 'rgba(2,192,118,0.35)' : 'rgba(248,73,96,0.35)';
+
+                    // wick
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 1.2;
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    ctx.moveTo(x+candleWidth/2, yHigh);
+                    ctx.lineTo(x+candleWidth/2, yLow);
+                    ctx.stroke();
+
+                    // body مع توهج لآخر شمعة
+                    if (i === visibleData.length-1){
+                        ctx.shadowColor = glow;
+                        ctx.shadowBlur = 10;
+                    }
+                    var bodyY = Math.min(yOpen,yClose);
+                    var bodyH = Math.max(1.5, Math.abs(yClose-yOpen));
+                    var grad = ctx.createLinearGradient(0, bodyY, 0, bodyY+bodyH);
+                    if (up){ grad.addColorStop(0,'#06d68a'); grad.addColorStop(1,'#02a868'); }
+                    else  { grad.addColorStop(0,'#ff6478'); grad.addColorStop(1,'#d63a52'); }
+                    ctx.fillStyle = grad;
+                    roundRect(ctx, x, bodyY, candleWidth, bodyH, Math.min(2, candleWidth/3));
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                });
+
+                // خط آخر سعر + بطاقة على اليمين
+                var last = visibleData[visibleData.length-1];
+                var yLast = padding.top + ((maxPrice-last.close)/priceRange)*graphHeight;
+                ctx.strokeStyle = last.close>=last.open ? '#02c076' : '#f84960';
+                ctx.setLineDash([4,4]); ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(padding.left, yLast); ctx.lineTo(padding.left+graphWidth, yLast); ctx.stroke();
+                ctx.setLineDash([]);
+                var lbl = formatPrice(last.close);
+                ctx.font = 'bold 10px Cairo, sans-serif';
+                var tw = ctx.measureText(lbl).width + 10;
+                ctx.fillStyle = last.close>=last.open ? '#02c076' : '#f84960';
+                roundRect(ctx, padding.left+graphWidth+3, yLast-8, tw, 16, 4); ctx.fill();
+                ctx.fillStyle = '#fff'; ctx.textAlign='left';
+                ctx.fillText(lbl, padding.left+graphWidth+8, yLast+3);
+
+                // علامات الزمن
+                ctx.fillStyle = isDark ? '#64748b' : '#94a3b8';
+                ctx.font = '9px Cairo, sans-serif';
+                ctx.textAlign='center';
+                var labels = Math.min(5, visibleData.length);
+                for (var k=0;k<labels;k++){
+                    var idx = Math.floor(k*(visibleData.length-1)/(labels-1||1));
+                    var d2 = new Date(visibleData[idx].time || Date.now());
+                    var hh = String(d2.getHours()).padStart(2,'0');
+                    var mm = String(d2.getMinutes()).padStart(2,'0');
+                    ctx.fillText(hh+':'+mm, padding.left + idx*slot + slot/2, h-6);
+                }
+
+                // crosshair
+                if (crosshair.active){
+                    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.25)' : 'rgba(15,23,42,0.25)';
+                    ctx.setLineDash([3,3]); ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.moveTo(crosshair.x, padding.top); ctx.lineTo(crosshair.x, padding.top+graphHeight); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(padding.left, crosshair.y); ctx.lineTo(padding.left+graphWidth, crosshair.y); ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                document.getElementById('zoom-level').textContent = Math.round(chartScale * 100) + '%';
+                // تحديث ملصقات الزمن أسفل
+                var firstT = visibleData[0].time, lastT = visibleData[visibleData.length-1].time;
+                if (firstT && lastT){
+                    var f = new Date(firstT), l = new Date(lastT);
+                    document.getElementById('chart-start-label').textContent =
+                        String(f.getHours()).padStart(2,'0')+':'+String(f.getMinutes()).padStart(2,'0');
+                    document.getElementById('chart-end-label').textContent =
+                        String(l.getHours()).padStart(2,'0')+':'+String(l.getMinutes()).padStart(2,'0');
+                }
+            }
+
+            function roundRect(ctx,x,y,w,h,r){
+                r = Math.min(r, w/2, h/2);
+                ctx.beginPath();
+                ctx.moveTo(x+r,y);
+                ctx.arcTo(x+w,y,x+w,y+h,r);
+                ctx.arcTo(x+w,y+h,x,y+h,r);
+                ctx.arcTo(x,y+h,x,y,r);
+                ctx.arcTo(x,y,x+w,y,r);
+                ctx.closePath();
+            }
+
+            function updatePriceDisplay() {
+                var last = marketChartData[marketChartData.length - 1];
+                var prev = marketChartData[marketChartData.length - 2] || last;
+                var change = ((last.close - prev.close) / prev.close * 100);
+                document.getElementById('current-price').textContent = formatPrice(last.close);
+                var changeSpan = document.getElementById('price-change');
+                changeSpan.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
+                changeSpan.className = 'text-sm font-medium px-2 py-1 rounded-lg ' + (change >= 0 ?
+                    'text-crypto-green bg-green-50' : 'text-crypto-red bg-red-50');
+            }
+
+            function switchSymbol(symbol) {
+                currentSymbol = symbol;
+                document.getElementById('market-title').innerHTML = '<i class="' + symbol.icon + '"></i> ' + symbol.id + '/USDT';
+                var count = currentTf === '1D' ? 24 : (currentTf === '1W' ? 7 * 24 : (currentTf === '1M' ? 30 : (currentTf === '3M' ? 90 : 365)));
+                marketChartData = generateInitialCandles(Math.min(count, 60), symbol.basePrice, symbol.volatility);
+                chartScale = 1.0; chartOffsetX = 0;
+                drawChart();
+                updatePriceDisplay();
+                document.querySelectorAll('.symbol-chip').forEach(function(chip) {
+                    chip.classList.remove('active');
+                    chip.style.background = ''; chip.style.color = '';
+                    if (chip.dataset.symbol === symbol.id) {
+                        chip.classList.add('active');
+                        chip.style.background = '#3772ff';
+                        chip.style.color = 'white';
+                    }
+                });
+            }
+
+            function renderSymbolChips() {
+                var container = document.getElementById('symbols-container');
+                container.innerHTML = symbols.map(function(s) {
+                    return '<div class="symbol-chip ' + (s.id === currentSymbol.id ? 'active' : '') +
+                        '" data-symbol="' + s.id + '" style="' + (s.id === currentSymbol.id ? 'background:#3772ff;color:white;' : '') +
+                        '"><i class="' + s.icon + '"></i> ' + s.id + '/USDT</div>';
+                }).join('');
+                document.querySelectorAll('.symbol-chip').forEach(function(chip) {
+                    chip.addEventListener('click', function() {
+                        var sym = symbols.find(function(s) { return s.id === chip.dataset.symbol; });
+                        if (sym) switchSymbol(sym);
+                    });
+                });
+            }
+
+            // ==================== دالة عرض الأسواق المحسّنة ====================
+            function formatVolume(vol) {
+                if (vol >= 1000) return (vol/1000).toFixed(2) + 'T';
+                if (vol >= 1) return vol.toFixed(2) + 'B';
+                return (vol * 1000).toFixed(1) + 'M';
+            }
+            function formatMarketCap(cap) {
+                if (cap >= 1000) return (cap / 1000).toFixed(2) + 'T';
+                if (cap >= 1) return cap.toFixed(2) + 'B';
+                return (cap * 1000).toFixed(0) + 'M';
+            }
+            function formatPrice(price) {
+                if (price >= 10000) return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                if (price >= 1) return price.toFixed(2);
+                if (price >= 0.01) return price.toFixed(4);
+                return price.toFixed(6);
+            }
+            function formatSupply(s){
+                if (s >= 1000) return (s/1000).toFixed(1)+'K';
+                return s.toFixed(1);
+            }
+
+            // sparkline SVG صغير
+            function sparklineSVG(arr, up){
+                if (!arr || arr.length<2) return '';
+                var min = Math.min.apply(null,arr), max = Math.max.apply(null,arr);
+                var range = (max-min) || 1;
+                var w=56, h=22;
+                var pts = arr.map(function(v,i){
+                    var x = (i/(arr.length-1))*w;
+                    var y = h - ((v-min)/range)*(h-2) - 1;
+                    return x.toFixed(1)+','+y.toFixed(1);
+                }).join(' ');
+                var color = up ? '#02c076' : '#f84960';
+                var fillId = 'sp'+Math.random().toString(36).slice(2,8);
+                return '<svg class="sparkline-wrap" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'
+                    + '<defs><linearGradient id="'+fillId+'" x1="0" x2="0" y1="0" y2="1">'
+                    + '<stop offset="0%" stop-color="'+color+'" stop-opacity="0.35"/>'
+                    + '<stop offset="100%" stop-color="'+color+'" stop-opacity="0"/></linearGradient></defs>'
+                    + '<polyline points="0,'+h+' '+pts+' '+w+','+h+'" fill="url(#'+fillId+')" stroke="none"/>'
+                    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>'
+                    + '</svg>';
+            }
+
+            function updateTopMarkets() {
+                var container = document.getElementById('top-markets-list');
+                container.innerHTML = symbols.map(function(s) {
+                    var st = marketStats[s.id];
+                    var price = (s.id === currentSymbol.id && marketChartData.length)
+                        ? marketChartData[marketChartData.length - 1].close : st.price;
+                    var isUp = st.change24h >= 0;
+                    var changeStr = (st.change24h>0?'+':'') + st.change24h.toFixed(2) + '%';
+                    var arrow = isUp ? '<i class="fas fa-caret-up"></i>' : '<i class="fas fa-caret-down"></i>';
+                    var spark = sparklineSVG(st.spark, isUp);
+                    var volDisplay = formatVolume(st.vol24);
+                    var capDisplay = formatMarketCap(s.marketCap);
+
+                    return '<div class="asset-row grid grid-cols-3 py-2.5 px-3 items-center" style="cursor:pointer;" onclick="(function(){var sym=window._forxSymbols&&window._forxSymbols.find(function(x){return x.id===\'' + s.id + '\'});if(sym)switchSymbol(sym);})()">'
+                        + '<div class="flex items-center gap-2">'
+                        +   '<div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--input-bg);"><i class="' + s.icon + ' text-base"></i></div>'
+                        +   '<div style="min-width:0;">'
+                        +     '<div class="font-bold flex items-center" style="font-size:0.78rem;"><span class="market-rank">#'+s.rank+'</span>' + s.id + '<span style="color:var(--text-secondary);font-weight:500;">/USDT</span></div>'
+                        +     '<div class="market-row-sub">' + s.name + '</div>'
+                        +     '<div class="market-cap-badge">MC $' + capDisplay + ' · ' + s.dominance.toFixed(2) + '%</div>'
+                        +   '</div>'
+                        + '</div>'
+                        + '<div class="text-center">'
+                        +   '<div class="market-row-price">$' + formatPrice(price) + '</div>'
+                        +   '<div class="market-row-sub" style="font-size:0.6rem;">'
+                        +     'H <span style="color:#02c076;">' + formatPrice(st.high24) + '</span>'
+                        +     ' · L <span style="color:#f84960;">' + formatPrice(st.low24) + '</span>'
+                        +   '</div>'
+                        +   '<div style="margin-top:3px;">' + spark + '</div>'
+                        + '</div>'
+                        + '<div class="text-right">'
+                        +   '<div class="market-row-change ' + (isUp ? 'up' : 'down') + '">' + arrow + ' ' + changeStr + '</div>'
+                        +   '<div class="market-row-vol">Vol $' + volDisplay + '</div>'
+                        +   '<div class="market-row-extra"><span>Sup ' + formatSupply(s.supply) + ' ' + s.id + '</span></div>'
+                        + '</div>'
+                        + '</div>';
+                }).join('');
+            }
+
+            // تخزين symbols للوصول من الـ onclick
+            window._forxSymbols = symbols;
+
+            function changeTimeframe(tf) {
+                currentTf = tf;
+                var count = tf === '1D' ? 24 : (tf === '1W' ? 7 * 24 : (tf === '1M' ? 30 : (tf === '3M' ? 90 : 365)));
+                marketChartData = generateInitialCandles(Math.min(count, 60), currentSymbol.basePrice, currentSymbol.volatility);
+                chartScale = 1.0; chartOffsetX = 0;
+                drawChart(); updatePriceDisplay();
+                document.querySelectorAll('.timeframe-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (btn.dataset.tf === tf) btn.classList.add('active');
+                });
+            }
+
+            // تخزين symbols للوصول من الـ onclick
+            window._forxSymbols = symbols;
+
+            function changeTimeframe(tf) {
+                currentTf = tf;
+                var count = tf === '1D' ? 24 : (tf === '1W' ? 7 * 24 : (tf === '1M' ? 30 : (tf === '3M' ? 90 : 365)));
+                marketChartData = generateInitialCandles(Math.min(count, 60), currentSymbol.basePrice, currentSymbol
+                    .volatility);
+                chartScale = 1.0;
+                chartOffsetX = 0;
+                drawChart();
+                updatePriceDisplay();
+                document.querySelectorAll('.timeframe-btn').forEach(function(btn) { btn.classList.remove('active'); if (
+                        btn.dataset.tf === tf) btn.classList.add('active'); });
+            }
+
+            function drawChartForCurrentSymbol() { if (marketChartData.length) drawChart(); }
+
+            function initMarketData() {
+                renderSymbolChips();
+                switchSymbol(symbols[0]);
+                if (simulationInterval) clearInterval(simulationInterval);
+                simulationInterval = setInterval(function() { updateMarketSimulation(); }, 3000);
+                document.getElementById('chart-zoom-in').addEventListener('click', function() { chartScale = Math.min(3.0,
+                        chartScale * 1.2);
+                    drawChart(); });
+                document.getElementById('chart-zoom-out').addEventListener('click', function() { chartScale = Math.max(0.5,
+                        chartScale / 1.2);
+                    drawChart(); });
+                document.getElementById('chart-reset').addEventListener('click', function() { chartScale = 1.0;
+                    chartOffsetX = 0;
+                    drawChart(); });
+            }
+
+            // ==================== التداول السريع ====================
+            var tradeModal = document.getElementById('trade-modal');
+            var currentTradeType = 'buy';
+
+            function openTradeModal(type) {
+                currentTradeType = type;
+                var lastPrice = marketChartData.length ? marketChartData[marketChartData.length - 1].close : currentSymbol
+                    .basePrice;
+                document.getElementById('trade-pair').value = currentSymbol.id + '/USDT';
+                document.getElementById('trade-price').value = lastPrice.toFixed(2);
+                document.getElementById('trade-amount').value = '';
+                document.getElementById('trade-total-value').textContent = '0.00 USDT';
+                document.getElementById('trade-error').classList.add('hidden');
+                var user = getCurrentUser();
+                document.getElementById('trade-available-balance').textContent = (user ? (user.balance || 0).toFixed(2) :
+                    '0.00') + ' USDT';
+                document.getElementById('trade-modal-title').innerHTML = type === 'buy' ?
+                    '<i class="fas fa-chart-line text-crypto-green"></i> شراء سريع' :
+                    '<i class="fas fa-chart-line text-crypto-red"></i> بيع سريع';
+                document.getElementById('confirm-buy-trade').style.display = type === 'buy' ? 'flex' : 'none';
+                document.getElementById('confirm-sell-trade').style.display = type === 'sell' ? 'flex' : 'none';
+                tradeModal.classList.remove('hidden');
+            }
+
+            function executeTrade(type) {
+                var user = getCurrentUser();
+                if (!user) return;
+                var amount = parseFloat(document.getElementById('trade-amount').value);
+                var price = parseFloat(document.getElementById('trade-price').value);
+                var errorDiv = document.getElementById('trade-error');
+                errorDiv.classList.add('hidden');
+                if (isNaN(amount) || amount <= 0) { errorDiv.textContent = 'الرجاء إدخال كمية صحيحة';
+                    errorDiv.classList.remove('hidden'); return; }
+                var totalValue = amount * price;
+                if (type === 'buy') {
+                    if (totalValue > (user.balance || 0)) { errorDiv.textContent = 'رصيد غير كافٍ للشراء';
+                        errorDiv.classList.remove('hidden'); return; }
+                    var newBalance = (user.balance || 0) - totalValue;
+                    var tradeRecord = { type: 'buy', symbol: currentSymbol.id, amount: amount, price: price, total: totalValue,
+                        date: new Date().toLocaleString('ar-EG') };
+                    var trades = (user.trades || []).concat([tradeRecord]);
+                    var transactions = (user.transactions || []).concat([{ type: 'trade_buy', amount: totalValue,
+                        date: tradeRecord.date, symbol: currentSymbol.id }]);
+                    updateUser(user.email, { balance: newBalance, trades: trades, transactions: transactions });
+                    showToast('✅ تم شراء ' + amount.toFixed(4) + ' ' + currentSymbol.id + ' بقيمة ' + totalValue.toFixed(
+                        2) + ' USDT');
+                } else {
+                    var holdings = 0;
+                    (user.trades || []).forEach(function(t) {
+                        if (t.symbol === currentSymbol.id) {
+                            holdings += (t.type === 'buy' ? (t.amount || 0) : -(t.amount || 0));
+                        }
+                    });
+                    if (amount > holdings) {
+                        errorDiv.textContent = 'رصيد غير كافٍ للبيع';
+                        errorDiv.classList.remove('hidden');
+                        return;
+                    }
+                    var sellValue = totalValue * 0.98;
+                    var newBalanceSell = (user.balance || 0) + sellValue;
+                    var tradeRecordSell = { type: 'sell', symbol: currentSymbol.id, amount: amount, price: price,
+                        total: sellValue, date: new Date().toLocaleString('ar-EG') };
+                    var tradesSell = (user.trades || []).concat([tradeRecordSell]);
+                    var transactionsSell = (user.transactions || []).concat([{ type: 'trade_sell', amount: sellValue,
+                        date: tradeRecordSell.date, symbol: currentSymbol.id }]);
+                    updateUser(user.email, { balance: newBalanceSell, trades: tradesSell, transactions: transactionsSell });
+                    showToast('✅ تم بيع ' + amount.toFixed(4) + ' ' + currentSymbol.id + ' بقيمة ' + sellValue.toFixed(2) +
+                        ' USDT');
+                }
+                tradeModal.classList.add('hidden');
+                refreshBalanceAndTransactions();
+            }
+
+            document.getElementById('trade-amount').addEventListener('input', function() {
+                var amount = parseFloat(this.value) || 0;
+                var price = parseFloat(document.getElementById('trade-price').value) || 0;
+                document.getElementById('trade-total-value').textContent = (amount * price).toFixed(2) + ' USDT';
+            });
+
+            // ==================== تحديث الرصيد ====================
+            function refreshBalanceAndTransactions() {
+                var user = getCurrentUser();
+                if (!user) return;
+                var balance = user.balance || 0;
+                var btcBalance = user.btcBalance || 0;
+                var ethBalance = user.ethBalance || 0;
+                var solBalance = user.solBalance || 0;
+                var aptBalance = user.aptBalance || 0;
+                var totalDeposited = (user.transactions || []).filter(function(t) { return t.type === 'deposit'; }).reduce(
+                    function(s, t) { return s + t.amount; }, 0);
+                var totalWithdrawn = (user.transactions || []).filter(function(t) { return t.type === 'withdraw'; }).reduce(
+                    function(s, t) { return s + t.amount; }, 0);
+                document.getElementById('home-balance').textContent = balance.toFixed(2) + ' USDT';
+                document.getElementById('home-deposited').textContent = totalDeposited.toFixed(2);
+                document.getElementById('home-withdrawn').textContent = totalWithdrawn.toFixed(2);
+                document.getElementById('account-balance').textContent = balance.toFixed(2) + ' USDT';
+                document.getElementById('account-fullname').textContent = user.fullName || 'مستخدم';
+                document.getElementById('account-email').innerHTML = '<i class="fas fa-envelope text-xs"></i> ' + user.email;
+                document.getElementById('account-avatar-letter').textContent = (user.fullName || 'U').charAt(0)
+                    .toUpperCase();
+                document.getElementById('account-join-date').textContent = user.joinDate || '2024';
+                document.getElementById('referral-code-display').textContent = user.referralCode || '------';
+                document.getElementById('summary-deposits').textContent = totalDeposited.toFixed(2) + ' USDT';
+                document.getElementById('summary-withdrawals').textContent = totalWithdrawn.toFixed(2) + ' USDT';
+                document.getElementById('summary-trades').textContent = (user.trades || []).length;
+                var totalUsdValue = balance + (btcBalance * 68245.50) + (ethBalance * 3421.80) + (solBalance * 172.35) + (
+                    aptBalance * 9.50);
+                document.getElementById('wallet-page-total-balance').textContent = totalUsdValue.toFixed(2) + ' USDT';
+                var assetsContainer = document.getElementById('wallet-page-assets');
+                assetsContainer.innerHTML = [
+                    { name: 'USDT', icon: 'fa-dollar-sign', color: 'green-600', bg: 'green-100', balance: balance, price: 1,
+                        decimals: 2 },
+                    { name: 'BTC', icon: 'fa-bitcoin', color: 'yellow-600', bg: 'yellow-100', balance: btcBalance,
+                        price: 68245.50, decimals: 6 },
+                    { name: 'ETH', icon: 'fa-ethereum', color: 'purple-600', bg: 'purple-100', balance: ethBalance,
+                        price: 3421.80, decimals: 6 },
+                    { name: 'SOL', icon: 'fa-sun', color: 'orange-500', bg: 'orange-100', balance: solBalance, price: 172.35,
+                        decimals: 6 },
+                    { name: 'APT', icon: 'fa-layer-group', color: 'teal-500', bg: 'teal-100', balance: aptBalance,
+                        price: 9.50, decimals: 4 }
+                ].map(function(a) {
+                    return '<div class="flex items-center justify-between py-3"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-' +
+                        a.bg + ' flex items-center justify-center"><i class="fas ' + a.icon + ' text-' + a
+                        .color + '"></i></div><div><p class="font-semibold">' + a.name +
+                        '</p></div></div><div class="text-right"><p class="font-bold">' + a.balance.toFixed(a
+                            .decimals) + '</p><p class="text-xs" style="color: var(--text-secondary);">≈ ' + (a
+                            .balance * a.price).toFixed(2) + ' $</p></div></div>';
+                }).join('');
+                var txList = document.getElementById('transactions-list');
+                var txs = (user.transactions || []).slice().reverse().slice(0, 8);
+                if (txs.length === 0) txList.innerHTML =
+                    '<p class="text-center py-2" style="color: var(--text-secondary);">لا توجد عمليات حديثة</p>';
+                else {
+                    txList.innerHTML = txs.map(function(tx) {
+                        if (tx.type === 'deposit') return '<div class="flex justify-between items-center border-b pb-2" style="border-color: var(--border);"><div><i class="fas fa-arrow-down text-crypto-green ml-1"></i>إيداع</div><div class="font-medium text-crypto-green">+' +
+                            tx.amount.toFixed(2) + ' USDT</div></div>';
+                        if (tx.type === 'withdraw') return '<div class="flex justify-between items-center border-b pb-2" style="border-color: var(--border);"><div><i class="fas fa-arrow-up text-crypto-red ml-1"></i>سحب</div><div class="font-medium text-crypto-red">-' +
+                            tx.amount.toFixed(2) + ' USDT</div></div>';
+                        if (tx.type === 'transfer') return '<div class="flex justify-between items-center border-b pb-2" style="border-color: var(--border);"><div><i class="fas fa-exchange-alt text-crypto-blue ml-1"></i>تحويل ' +
+                            tx.asset + '</div><div class="font-medium text-crypto-red">-' + tx.amount.toFixed(
+                                6) + ' ' + tx.asset + '</div></div>';
+                        if (tx.type === 'trade_buy') return '<div class="flex justify-between items-center border-b pb-2" style="border-color: var(--border);"><div><i class="fas fa-chart-line text-crypto-green ml-1"></i>شراء ' +
+                            (tx.symbol || '') + '</div><div class="font-medium text-crypto-red">-' + tx.amount
+                            .toFixed(2) + ' USDT</div></div>';
+                        if (tx.type === 'trade_sell') return '<div class="flex justify-between items-center border-b pb-2" style="border-color: var(--border);"><div><i class="fas fa-chart-line text-crypto-blue ml-1"></i>بيع ' +
+                            (tx.symbol || '') + '</div><div class="font-medium text-crypto-green">+' + tx.amount
+                            .toFixed(2) + ' USDT</div></div>';
+                        return '';
+                    }).join('');
+                }
+                updateTransferHistory();
+                updateWalletModalData();
+                updateTransferAvailable();
+            }
+
+            function updateTransferHistory() {
+                var user = getCurrentUser();
+                if (!user) return;
+                var transfers = (user.transactions || []).filter(function(t) { return t.type === 'transfer'; }).slice(-5)
+                    .reverse();
+                var container = document.getElementById('transfer-history-list');
+                if (transfers.length === 0) {
+                    container.innerHTML =
+                        '<p class="text-center py-2" style="color: var(--text-secondary);">لا توجد تحويلات حديثة</p>';
+                    return;
+                }
+                container.innerHTML = transfers.map(function(t) {
+                    return '<div class="flex items-center justify-between py-2 border-b" style="border-color: var(--border);"><div><i class="fas fa-exchange-alt text-crypto-blue ml-2"></i>' +
+                        t.asset + ' - ' + t.network + '</div><div><span class="font-medium">' + t.amount
+                        .toFixed(6) + '</span> <span class="text-xs">إلى ' + (t.recipient || '').substring(0,
+                            8) + '...</span></div></div>';
+                }).join('');
+            }
+
+            function updateWalletModalData() {
+                var user = getCurrentUser();
+                if (!user) return;
+                var usdtBalance = user.balance || 0;
+                var btcBalance = user.btcBalance || 0;
+                var ethBalance = user.ethBalance || 0;
+                var solBalance = user.solBalance || 0;
+                var aptBalance = user.aptBalance || 0;
+                var btcPrice = 68245.50,
+                    ethPrice = 3421.80,
+                    solPrice = 172.35,
+                    aptPrice = 9.50;
+                var total = usdtBalance + btcBalance * btcPrice + ethBalance * ethPrice + solBalance * solPrice + aptBalance *
+                    aptPrice;
+                document.getElementById('wallet-total-balance').textContent = total.toFixed(2) + ' USDT';
+                var assetsHtml = [
+                    { name: 'USDT', icon: 'fa-dollar-sign', color: 'green-600', balance: usdtBalance, price: 1,
+                        decimals: 2 },
+                    { name: 'BTC', icon: 'fa-bitcoin', color: 'yellow-600', balance: btcBalance, price: btcPrice,
+                        decimals: 6 },
+                    { name: 'ETH', icon: 'fa-ethereum', color: 'purple-600', balance: ethBalance, price: ethPrice,
+                        decimals: 6 },
+                    { name: 'SOL', icon: 'fa-sun', color: 'orange-500', balance: solBalance, price: solPrice,
+                        decimals: 6 },
+                    { name: 'APT', icon: 'fa-layer-group', color: 'teal-500', balance: aptBalance, price: aptPrice,
+                        decimals: 4 }
+                ].map(function(a) {
+                    return '<div class="flex items-center justify-between p-3 rounded-lg" style="background: var(--input-bg);"><div class="flex items-center gap-2"><i class="fas ' +
+                        a.icon + ' text-' + a.color + '"></i><span class="font-semibold">' + a.name +
+                        '</span></div><div class="text-right"><span class="font-bold">' + a.balance.toFixed(a
+                            .decimals) + '</span><br><span class="text-xs">≈ ' + (a.balance * a.price).toFixed(
+                            2) + ' $</span></div></div>';
+                }).join('');
+                document.getElementById('wallet-modal-assets').innerHTML = assetsHtml;
+                var walletTxList = document.getElementById('wallet-transactions-list');
+                var txs = (user.transactions || []).slice().reverse().slice(0, 3);
+                if (txs.length === 0) walletTxList.innerHTML =
+                    '<p class="text-center py-2 text-sm" style="color: var(--text-secondary);">لا توجد عمليات حديثة</p>';
+                else walletTxList.innerHTML = txs.map(function(tx) { return '<div class="flex justify-between text-sm"><span>' +
+                        (tx.type === 'deposit' ? 'إيداع' : tx.type === 'withdraw' ? 'سحب' : tx.type === 'transfer' ?
+                            'تحويل' : tx.type === 'trade_buy' ? 'شراء' : 'بيع') + '</span><span class="' + (tx.type ===
+                            'deposit' || tx.type === 'trade_sell' ? 'text-crypto-green' : 'text-crypto-red') + '">' + (
+                        tx.type === 'deposit' || tx.type === 'trade_sell' ? '+' : '-') + (tx.amount || 0).toFixed(
+                        2) + '</span></div>'; }).join('');
+            }
+
+            var currentTransferAsset = 'USDT';
+
+            function updateTransferAvailable() {
+                var user = getCurrentUser();
+                if (!user) return;
+                var available = 0;
+                if (currentTransferAsset === 'USDT') available = user.balance || 0;
+                else if (currentTransferAsset === 'BTC') available = user.btcBalance || 0;
+                else if (currentTransferAsset === 'ETH') available = user.ethBalance || 0;
+                else if (currentTransferAsset === 'SOL') available = user.solBalance || 0;
+                else if (currentTransferAsset === 'APT') available = user.aptBalance || 0;
+                document.getElementById('transfer-available').textContent = available.toFixed(currentTransferAsset ===
+                    'USDT' ? 2 : (currentTransferAsset === 'APT' ? 4 : 6));
+                document.getElementById('transfer-available-symbol').textContent = currentTransferAsset;
+                document.getElementById('transfer-asset-symbol').textContent = currentTransferAsset;
+                calculateReceiveAmount();
+            }
+
+            function calculateReceiveAmount() {
+                var amount = parseFloat(document.getElementById('transfer-amount').value) || 0;
+                var fee = 0;
+                if (currentTransferAsset === 'USDT') fee = 1.0;
+                else if (currentTransferAsset === 'BTC') fee = 0.0001;
+                else if (currentTransferAsset === 'ETH') fee = 0.002;
+                else if (currentTransferAsset === 'SOL') fee = 0.005;
+                else if (currentTransferAsset === 'APT') fee = 0.01;
+                document.getElementById('transfer-fee-amount').textContent = fee.toFixed(currentTransferAsset === 'USDT' ?
+                    2 : (currentTransferAsset === 'APT' ? 4 : 6)) + ' ' + currentTransferAsset;
+                var receive = Math.max(0, amount - fee);
+                document.getElementById('transfer-receive-amount').textContent = receive.toFixed(currentTransferAsset ===
+                    'USDT' ? 2 : (currentTransferAsset === 'APT' ? 4 : 6)) + ' ' + currentTransferAsset;
+            }
+
+            function processTransfer(asset, network, recipient, amount) {
+                var user = getCurrentUser();
+                if (!user) return { success: false, message: 'جلسة غير صالحة' };
+                if (!recipient || recipient.trim().length < 5) return { success: false, message: 'عنوان المستلم غير صالح' };
+                if (isNaN(amount) || amount <= 0) return { success: false, message: 'المبلغ غير صالح' };
+                var fee = 0,
+                    balanceField = '',
+                    minAmount = 0;
+                if (asset === 'USDT') { fee = 1.0;
+                    balanceField = 'balance';
+                    minAmount = 10; } else if (asset === 'BTC') { fee = 0.0001;
+                    balanceField = 'btcBalance';
+                    minAmount = 0.001; } else if (asset === 'ETH') { fee = 0.002;
+                    balanceField = 'ethBalance';
+                    minAmount = 0.01; } else if (asset === 'SOL') { fee = 0.005;
+                    balanceField = 'solBalance';
+                    minAmount = 0.1; } else if (asset === 'APT') { fee = 0.01;
+                    balanceField = 'aptBalance';
+                    minAmount = 0.1; } else return { success: false, message: 'عملة غير مدعومة' };
+                if (amount < minAmount) return { success: false, message: 'الحد الأدنى للتحويل ' + minAmount + ' ' + asset };
+                var currentBalance = user[balanceField] || 0;
+                if (amount + fee > currentBalance) return { success: false, message: 'رصيد غير كافٍ (يشمل الرسوم)' };
+                var newBalance = currentBalance - amount - fee;
+                var transaction = { type: 'transfer', asset: asset, network: network, recipient: recipient.trim(),
+                    amount: amount, fee: fee, date: new Date().toLocaleString('ar-EG') };
+                var updates = {};
+                updates[balanceField] = newBalance;
+                updates.transactions = (user.transactions || []).concat([transaction]);
+                updateUser(user.email, updates);
+                refreshBalanceAndTransactions();
+                return { success: true };
+            }
+
+            function processWithdraw(address, amount) {
+                var user = getCurrentUser();
+                if (!user) return false;
+                if (!address || address.trim().length < 5) { showToast('عنوان المحفظة غير صالح', true); return false; }
+                if (isNaN(amount) || amount <= 0) { showToast('المبلغ غير صالح', true); return false; }
+                if (amount > (user.balance || 0)) { showToast('رصيدك غير كافٍ', true); return false; }
+                var newBalance = (user.balance || 0) - amount;
+                var transaction = { type: 'withdraw', amount: amount, date: new Date().toLocaleString('ar-EG'),
+                    address: address.trim() };
+                var transactions = (user.transactions || []).concat([transaction]);
+                updateUser(user.email, { balance: newBalance, transactions: transactions });
+                refreshBalanceAndTransactions();
+                showToast('تم سحب ' + amount.toFixed(2) + ' USDT بنجاح');
+                return true;
+            }
+
+            function changePassword(currentPass, newPass, confirmPass) {
+                var user = getCurrentUser();
+                if (!user) return { success: false, message: 'جلسة غير صالحة' };
+                if (user.password !== btoa(currentPass)) return { success: false, message: 'كلمة المرور الحالية غير صحيحة' };
+                if (newPass.length < 6) return { success: false, message: 'كلمة المرور الجديدة قصيرة (6 أحرف على الأقل)' };
+                if (newPass !== confirmPass) return { success: false, message: 'كلمة المرور الجديدة غير متطابقة' };
+                updateUser(user.email, { password: btoa(newPass) });
+                return { success: true };
+            }
+
+            function enterPlatform(user) {
+                displayUsername.textContent = user.fullName;
+                authScreen.classList.add('hidden');
+                mainScreen.classList.remove('hidden');
+                loadPriceAlerts();
+                updateAlertBadge();
+                refreshBalanceAndTransactions();
+                updateInviteModalData();
+                switchPage('home');
+                initMarketData();
+                showInstallIcons();
+            }
+
+            function switchPage(pageId) {
+                Object.values(pages).forEach(function(p) { p.classList.remove('active-page'); });
+                if (pages[pageId]) pages[pageId].classList.add('active-page');
+                navItems.forEach(function(item) { item.classList.remove('active');
+                    item.style.color = '#94a3b8'; });
+                var activeNav = Array.from(navItems).find(function(el) { return el.dataset.page === pageId; });
+                if (activeNav) { activeNav.classList.add('active');
+                    activeNav.style.color = '#3772ff'; }
+                if (pageId === 'markets') drawChartForCurrentSymbol();
+                if (pageId === 'wallet') { refreshBalanceAndTransactions();
+                    updateTransferAvailable(); }
+            }
+
+            function restoreSession() {
+                var session = JSON.parse(localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) ||
+                    'null');
+                if (session) { var user = findUserByEmail(session.email); if (user) { enterPlatform(user); return true; } }
+                return false;
+            }
+
+            // ==================== بيانات الإحالة (القيم صفر دائمًا) ====================
+            function updateInviteModalData() {
+                document.getElementById('invite-referrals-count').textContent = '0';
+                document.getElementById('invite-active-count').textContent = '0 نشط';
+                document.getElementById('invite-earnings').textContent = '0.00 USDT';
+                document.getElementById('invite-pending-earnings').textContent = '0.00 قيد الانتظار';
+
+                var referralsList = document.getElementById('invite-referrals-list');
+                referralsList.innerHTML =
+                    '<p class="text-center py-3 text-sm" style="color: var(--text-secondary);">لا توجد دعوات بعد. شارك رابطك وابدأ الربح!</p>';
+            }
+
+            // ==================== بيانات مزودي الإشارات ====================
+            var providersData = [
+                { rank: 1, name: "Alpha Crypto", category: "Crypto", return30d: 187.23, followers: "12.4K", rating: 4.9,
+                    icon: "fab fa-bitcoin text-yellow-500" },
+                { rank: 2, name: "FX Leaders", category: "Forex", return30d: 152.67, followers: "9.8K", rating: 4.8,
+                    icon: "fas fa-chart-line text-blue-500" },
+                { rank: 3, name: "Gold Signals", category: "Commodities", return30d: 134.50, followers: "7.2K", rating: 4.7,
+                    icon: "fas fa-coins text-yellow-600" },
+                { rank: 4, name: "ETH Whales", category: "Crypto", return30d: 121.34, followers: "15.1K", rating: 4.9,
+                    icon: "fab fa-ethereum text-purple-500" },
+                { rank: 5, name: "Stock Master", category: "Stocks", return30d: 98.76, followers: "5.4K", rating: 4.6,
+                    icon: "fas fa-chart-bar text-green-600" },
+                { rank: 6, name: "Crypto Bull", category: "Crypto", return30d: 87.12, followers: "8.7K", rating: 4.7,
+                    icon: "fab fa-bitcoin text-yellow-500" },
+                { rank: 7, name: "Pips Hunter", category: "Forex", return30d: 76.45, followers: "4.2K", rating: 4.5,
+                    icon: "fas fa-dollar-sign text-green-500" },
+                { rank: 8, name: "Oil Trader", category: "Commodities", return30d: 68.33, followers: "3.9K", rating: 4.4,
+                    icon: "fas fa-oil-can text-orange-400" },
+                { rank: 9, name: "BNB Signals", category: "Crypto", return30d: 59.21, followers: "11.2K", rating: 4.8,
+                    icon: "fas fa-coins text-yellow-500" },
+                { rank: 10, name: "Swing Trade Pro", category: "Stocks", return30d: 52.10, followers: "6.5K", rating: 4.5,
+                    icon: "fas fa-chart-pie text-blue-500" },
+                { rank: 11, name: "Solana Surf", category: "Crypto", return30d: 48.67, followers: "13.4K", rating: 4.7,
+                    icon: "fas fa-sun text-orange-400" },
+                { rank: 12, name: "Forex Elite", category: "Forex", return30d: 44.23, followers: "3.1K", rating: 4.3,
+                    icon: "fas fa-globe text-blue-400" },
+                { rank: 13, name: "Silver Signals", category: "Commodities", return30d: 39.87, followers: "2.8K", rating: 4.2,
+                    icon: "fas fa-circle text-gray-400" },
+                { rank: 14, name: "DeFi Alerts", category: "Crypto", return30d: 35.45, followers: "9.1K", rating: 4.6,
+                    icon: "fas fa-link text-blue-600" },
+                { rank: 15, name: "Index Trader", category: "Indices", return30d: 31.22, followers: "5.7K", rating: 4.4,
+                    icon: "fas fa-chart-line text-indigo-500" },
+                { rank: 16, name: "NFT Whisper", category: "NFT", return30d: 27.89, followers: "7.8K", rating: 4.5,
+                    icon: "fas fa-paint-brush text-pink-500" },
+                { rank: 17, name: "Metaverse Pro", category: "Metaverse", return30d: 23.56, followers: "6.2K", rating: 4.3,
+                    icon: "fas fa-vr-cardboard text-purple-400" },
+                { rank: 18, name: "Crypto Arbitrage", category: "Crypto", return30d: 19.34, followers: "4.5K", rating: 4.1,
+                    icon: "fas fa-arrows-alt-h text-teal-500" },
+                { rank: 19, name: "SPX Signals", category: "Indices", return30d: 15.78, followers: "3.3K", rating: 4.0,
+                    icon: "fas fa-chart-bar text-gray-600" },
+                { rank: 20, name: "Penny Stock Gems", category: "Stocks", return30d: 12.45, followers: "2.1K", rating: 3.9,
+                    icon: "fas fa-gem text-blue-300" }
+            ];
+
+            function renderProvidersList() {
+                var container = document.getElementById('providers-list-container');
+                var html = '';
+                providersData.forEach(function(p) {
+                    html += '<div class="provider-row flex items-center gap-3 py-3 px-1 rounded-lg transition" style="cursor:pointer;"><div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#f1f5f9;color:#64748b;font-weight:600;font-size:0.75rem;">' +
+                        p.rank +
+                        '</div><div class="flex-1"><div class="flex items-center gap-2"><i class="' + p.icon +
+                        ' text-lg"></i><div><h4 class="font-bold text-sm">' + p.name +
+                        '</h4><span class="text-xs" style="color: var(--text-secondary);">' + p.category +
+                        '</span></div></div></div><div class="text-left"><div class="font-bold text-crypto-green text-base">+' +
+                        p.return30d + '%</div></div></div>';
+                });
+                container.innerHTML = html;
+            }
+
+            // ==================== محتوى الأخبار ====================
+            function renderNewsContent() {
+                var container = document.getElementById('news-content-container');
+                container.innerHTML = [
+                    { title: '🚀 عملات رقمية جديدة متاحة للتداول', badge: 'إطلاق جديد',
+                        text: 'تمت إضافة 5 عملات رقمية واعدة إلى منصتنا، مع سيولة عالية ورسوم تداول 0.1% فقط.',
+                        pairs: ['ARB/USDT', 'OP/USDT', 'LINK/USDT', 'NEAR/USDT', 'ATOM/USDT'] },
+                    { title: 'تحديث واجهة المستخدم وتحسين الأداء', badge: 'تحديث النظام',
+                        text: 'قمنا بتحديث التصميم ليكون أكثر سلاسة، مع تحسين سرعة تنفيذ الصفقات بنسبة 40% وإضافة ميزة الإشعارات الفورية والوضع الليلي.' },
+                    { title: '🎉 استرداد 50% من رسوم التداول', badge: 'عرض محدود',
+                        text: 'لكل مستخدم يقوم بإيداع 100 USDT أو أكثر خلال الأسبوع الحالي، سيتم استرداد 50% من رسوم التداول.' },
+                    { title: 'بيتكوين تتجاوز 70,000$ للمرة الأولى', badge: 'أخبار السوق',
+                        text: 'ارتفاع قياسي جديد لعملة البيتكوين مع تزايد التبني المؤسسي والموافقة على صناديق الاستثمار المتداولة.' },
+                    { title: 'المحفظة الرقمية ForX Wallet قريباً', badge: 'قريباً',
+                        text: 'قريباً يمكنك تخزين وإدارة جميع عملاتك الرقمية في محفظة ForX الآمنة مع دعم Staking وعوائد تصل إلى 12% سنوياً.' }
+                ].map(function(n) {
+                    var pairsHtml = n.pairs ? '<div class="flex flex-wrap gap-2 mt-2">' + n.pairs.map(function(p) {
+                        return '<span class="px-3 py-1 rounded-full text-xs font-medium" style="background: var(--card); border: 1px solid var(--border);">' +
+                            p + '</span>';
+                    }).join('') + '</div>' : '';
+                    return '<div class="p-4 rounded-xl border" style="background: var(--input-bg); border-color: var(--border);"><div class="flex items-center gap-2 mb-2"><span class="text-xs px-2 py-1 rounded-full font-medium" style="background: #f1f5f9;">' +
+                        n.badge + '</span></div><h4 class="font-bold mb-1">' + n.title +
+                        '</h4><p class="text-sm" style="color: var(--text-secondary);">' + n.text + '</p>' +
+                        pairsHtml + '</div>';
+                }).join('');
+            }
+
+            // ==================== ربط الأحداث ====================
+            document.addEventListener('DOMContentLoaded', function() {
+                var TRC20_ADDRESS = 'TEs8eiNd3gdkqX3sxgc7mAuqJ2dx88ycZC';
+                var BEP20_ADDRESS = '0x5f2d9e1767d6eeafe0147dfaf11ea9c2fe83a2b7';
+                renderNewsContent();
+
+                // مزامنة الصفقة
+                document.getElementById('sync-submit-btn').addEventListener('click', function() {
+                    var code = document.getElementById('sync-order-code').value.trim();
+                    var msg = document.getElementById('sync-message');
+                    if (!code) { msg.textContent = 'الرجاء إدخال كود الطلب';
+                        msg.className = 'text-sm mt-2 error-message';
+                        msg.classList.remove('hidden'); return; }
+                    if (code.toUpperCase() === 'SYNC2024') { msg.textContent =
+                        '✅ تمت المزامنة بنجاح!';
+                        msg.className = 'text-sm mt-2 success-message';
+                        msg.classList.remove('hidden');
+                        showToast('تمت مزامنة الصفقة بنجاح'); } else { msg.textContent =
+                        '❌ كود الطلب غير صحيح';
+                        msg.className = 'text-sm mt-2 error-message';
+                        msg.classList.remove('hidden'); }
+                });
+
+                // نسيت كلمة المرور
+                document.getElementById('forgot-password-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showToast('🔑 يرجى التواصل مع الدعم الفني لاستعادة كلمة المرور');
+                });
+
+                var tabLogin = document.getElementById('tab-login'),
+                    tabSignup = document.getElementById('tab-signup');
+                var loginForm = document.getElementById('login-form'),
+                    signupForm = document.getElementById('signup-form');
+                var loginEmail = document.getElementById('login-email'),
+                    loginPass = document.getElementById('login-password');
+                var signupName = document.getElementById('signup-name'),
+                    signupEmail = document.getElementById('signup-email'),
+                    signupPass = document.getElementById('signup-password'),
+                    signupConfirm = document.getElementById('signup-confirm'),
+                    signupReferralCode = document.getElementById('signup-referral-code'),
+                    agreeTerms = document.getElementById('agree-terms');
+                var loginError = document.getElementById('login-error'),
+                    signupError = document.getElementById('signup-error'),
+                    signupSuccess = document.getElementById('signup-success');
+
+                function showLoginTab() { loginForm.classList.remove('hidden');
+                    signupForm.classList.add('hidden');
+                    tabLogin.classList.add('tab-active');
+                    tabSignup.classList.remove('tab-active'); }
+
+                function showSignupTab() { signupForm.classList.remove('hidden');
+                    loginForm.classList.add('hidden');
+                    tabSignup.classList.add('tab-active');
+                    tabLogin.classList.remove('tab-active'); }
+                tabLogin.addEventListener('click', showLoginTab);
+                tabSignup.addEventListener('click', showSignupTab);
+                document.getElementById('switch-to-signup').addEventListener('click', showSignupTab);
+                document.getElementById('switch-to-login').addEventListener('click', showLoginTab);
+
+                document.getElementById('login-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var email = loginEmail.value.trim(),
+                        pass = loginPass.value;
+                    if (!email || !pass) { loginError.textContent = 'أدخل البريد وكلمة المرور';
+                        loginError.classList.remove('hidden'); return; }
+                    var user = findUserByEmail(email);
+                    if (!user || user.password !== btoa(pass)) { loginError.textContent =
+                        'بيانات الدخول غير صحيحة';
+                        loginError.classList.remove('hidden'); return; }
+                    setSession(user, document.getElementById('remember-me').checked);
+                    enterPlatform(user);
+                    showToast('مرحباً ' + user.fullName);
+                });
+
+                document.getElementById('signup-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var name = signupName.value.trim(),
+                        email = signupEmail.value.trim(),
+                        pass = signupPass.value,
+                        confirm = signupConfirm.value,
+                        referralCode = signupReferralCode.value.trim();
+                    signupError.classList.add('hidden');
+                    signupSuccess.classList.add('hidden');
+                    if (!name || !email || !pass || !confirm) { signupError.textContent =
+                        'جميع الحقول مطلوبة';
+                        signupError.classList.remove('hidden'); return; }
+                    if (pass.length < 6) { signupError.textContent = 'كلمة المرور 6 أحرف على الأقل';
+                        signupError.classList.remove('hidden'); return; }
+                    if (pass !== confirm) { signupError.textContent = 'كلمتا المرور غير متطابقتين';
+                        signupError.classList.remove('hidden'); return; }
+                    if (!agreeTerms.checked) { signupError.textContent = 'يجب الموافقة على الشروط';
+                        signupError.classList.remove('hidden'); return; }
+                    if (findUserByEmail(email)) { signupError.textContent = 'البريد مسجل مسبقاً';
+                        signupError.classList.remove('hidden'); return; }
+                    var newUser = { fullName: name, email: email.toLowerCase(), password: btoa(pass),
+                        balance: 0, btcBalance: 0, ethBalance: 0, solBalance: 0, aptBalance: 0,
+                        transactions: [], priceAlerts: [], trades: [], joinDate: new Date().toISOString()
+                            .split('T')[0],
+                        referralCode: generateReferralCode(email.toLowerCase()),
+                        referredUsers: [],
+                        referralEarnings: 0,
+                        pendingEarnings: 0,
+                        referredBy: referralCode || ''
+                    };
+                    var users = getUsers();
+                    users.push(newUser);
+                    saveUsers(users);
+                    setSession(newUser, true);
+                    signupSuccess.textContent = '✅ تم إنشاء الحساب!';
+                    signupSuccess.classList.remove('hidden');
+                    setTimeout(function() { enterPlatform(newUser);
+                        showToast('أهلاً ' + name); }, 600);
+                });
+
+                // الموديلات
+                var depositModal = document.getElementById('deposit-modal');
+                var withdrawModal = document.getElementById('withdraw-modal');
+                var depositAddressSpan = document.getElementById('deposit-address');
+                var networkLabel = document.getElementById('network-label');
+                var btnTRC20 = document.getElementById('network-trc20');
+                var btnBEP20 = document.getElementById('network-bep20');
+                var qrCanvas = document.getElementById('deposit-qrcode');
+                var withdrawBtnTRC20 = document.getElementById('withdraw-network-trc20');
+                var withdrawBtnBEP20 = document.getElementById('withdraw-network-bep20');
+                var withdrawAddressLabel = document.getElementById('withdraw-address-label');
+
+                function generateQRCode(text, canvas) {
+                    if (!text) return;
+                    try {
+                        var qr = qrcode(0, 'M');
+                        qr.addData(text);
+                        qr.make();
+                        var size = 200;
+                        var cells = qr.getModuleCount();
+                        var cellSize = Math.floor(size / cells);
+                        var qrCtx = canvas.getContext('2d');
+                        canvas.width = size;
+                        canvas.height = size;
+                        qrCtx.clearRect(0, 0, size, size);
+                        qrCtx.fillStyle = '#ffffff';
+                        qrCtx.fillRect(0, 0, size, size);
+                        qrCtx.fillStyle = '#1e293b';
+                        for (var row = 0; row < cells; row++)
+                            for (var col = 0; col < cells; col++)
+                                if (qr.isDark(row, col)) qrCtx.fillRect(col * cellSize, row * cellSize, cellSize,
+                                    cellSize);
+                    } catch (e) {}
+                }
+
+                function setActiveNetwork(network) {
+                    if (network === 'trc20') {
+                        btnTRC20.classList.add('active-network');
+                        btnBEP20.classList.remove('active-network');
+                        depositAddressSpan.textContent = TRC20_ADDRESS;
+                        networkLabel.textContent = 'عنوان المحفظة (TRC20)';
+                        generateQRCode(TRC20_ADDRESS, qrCanvas);
+                    } else {
+                        btnBEP20.classList.add('active-network');
+                        btnTRC20.classList.remove('active-network');
+                        depositAddressSpan.textContent = BEP20_ADDRESS;
+                        networkLabel.textContent = 'عنوان المحفظة (BEP20 · BSC)';
+                        generateQRCode(BEP20_ADDRESS, qrCanvas);
+                    }
+                }
+
+                function setActiveWithdrawNetwork(network) {
+                    if (network === 'trc20') {
+                        withdrawBtnTRC20.classList.add('active-network');
+                        withdrawBtnBEP20.classList.remove('active-network');
+                        withdrawAddressLabel.textContent = 'عنوان المحفظة (TRC20)';
+                    } else {
+                        withdrawBtnBEP20.classList.add('active-network');
+                        withdrawBtnTRC20.classList.remove('active-network');
+                        withdrawAddressLabel.textContent = 'عنوان المحفظة (BEP20 · BSC)';
+                    }
+                }
+
+                btnTRC20.addEventListener('click', function() { setActiveNetwork('trc20'); });
+                btnBEP20.addEventListener('click', function() { setActiveNetwork('bep20'); });
+                withdrawBtnTRC20.addEventListener('click', function() { setActiveWithdrawNetwork('trc20'); });
+                withdrawBtnBEP20.addEventListener('click', function() { setActiveWithdrawNetwork('bep20'); });
+
+                function openDepositModal() { depositModal.classList.remove('hidden');
+                    setActiveNetwork('trc20'); }
+
+                function openWithdrawModal() { withdrawModal.classList.remove('hidden');
+                    document.getElementById('withdraw-address').value = '';
+                    document.getElementById('withdraw-amount').value = '';
+                    document.getElementById('withdraw-error').classList.add('hidden');
+                    setActiveWithdrawNetwork('trc20'); }
+
+                function closeModals() { depositModal.classList.add('hidden');
+                    withdrawModal.classList.add('hidden'); }
+
+                document.getElementById('home-deposit-btn').addEventListener('click', openDepositModal);
+                document.getElementById('home-withdraw-btn').addEventListener('click', openWithdrawModal);
+                document.getElementById('account-deposit-btn').addEventListener('click', openDepositModal);
+                document.getElementById('account-withdraw-btn').addEventListener('click', openWithdrawModal);
+                document.getElementById('wallet-page-deposit-btn').addEventListener('click', openDepositModal);
+                document.getElementById('wallet-page-withdraw-btn').addEventListener('click', openWithdrawModal);
+                document.getElementById('cancel-deposit').addEventListener('click', closeModals);
+                document.getElementById('cancel-withdraw').addEventListener('click', closeModals);
+                document.getElementById('copy-address-btn').addEventListener('click', function() {
+                    navigator.clipboard ? navigator.clipboard.writeText(depositAddressSpan.textContent).then(
+                        function() { showToast('تم نسخ العنوان'); }) : showToast('انسخ يدوياً', true);
+                });
+
+                document.getElementById('confirm-withdraw').addEventListener('click', function() {
+                    var address = document.getElementById('withdraw-address').value.trim();
+                    var amount = parseFloat(document.getElementById('withdraw-amount').value);
+                    var err = document.getElementById('withdraw-error');
+                    if (!address || address.length < 5) { err.textContent = 'عنوان المحفظة مطلوب';
+                        err.classList.remove('hidden'); return; }
+                    if (isNaN(amount) || amount <= 0) { err.textContent = 'المبلغ غير صحيح';
+                        err.classList.remove('hidden'); return; }
+                    if (processWithdraw(address, amount)) closeModals();
+                    else { err.textContent = 'رصيد غير كافٍ أو خطأ';
+                        err.classList.remove('hidden'); }
+                });
+
+                // نسخ رمز الإحالة
+                document.getElementById('copy-referral-code-btn').addEventListener('click', function() {
+                    var code = document.getElementById('referral-code-display').textContent;
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(code).then(function() {
+                            showToast('✅ تم نسخ رمز الإحالة: ' + code);
+                        });
+                    } else {
+                        showToast('انسخ الكود يدوياً: ' + code, true);
+                    }
+                });
+
+                // التحويل
+                var transferAssetOptions = document.querySelectorAll('#transfer-asset-selector .asset-option');
+                var transferAmount = document.getElementById('transfer-amount');
+                transferAssetOptions.forEach(function(opt) {
+                    opt.addEventListener('click', function() {
+                        transferAssetOptions.forEach(function(o) { o.classList.remove('active');
+                            o.style.background = 'white';
+                            o.style.color = ''; });
+                        opt.classList.add('active');
+                        opt.style.background = '#3772ff';
+                        opt.style.color = 'white';
+                        currentTransferAsset = opt.dataset.asset;
+                        updateTransferAvailable();
+                    });
+                });
+
+                var transferNetworkTRC20 = document.getElementById('transfer-network-trc20');
+                var transferNetworkBEP20 = document.getElementById('transfer-network-bep20');
+                var transferNetworkERC20 = document.getElementById('transfer-network-erc20');
+                var transferNetworkAPT = document.getElementById('transfer-network-apt');
+                var currentTransferNetwork = 'TRC20';
+
+                function setTransferActiveNetwork(network) {
+                    currentTransferNetwork = network;
+                    [transferNetworkTRC20, transferNetworkBEP20, transferNetworkERC20, transferNetworkAPT].forEach(
+                        function(btn) {
+                            btn.classList.remove('active-network');
+                        });
+                    if (network === 'TRC20') transferNetworkTRC20.classList.add('active-network');
+                    else if (network === 'BEP20') transferNetworkBEP20.classList.add('active-network');
+                    else if (network === 'ERC20') transferNetworkERC20.classList.add('active-network');
+                    else if (network === 'APT') transferNetworkAPT.classList.add('active-network');
+                    calculateReceiveAmount();
+                }
+                transferNetworkTRC20.addEventListener('click', function() { setTransferActiveNetwork('TRC20'); });
+                transferNetworkBEP20.addEventListener('click', function() { setTransferActiveNetwork('BEP20'); });
+                transferNetworkERC20.addEventListener('click', function() { setTransferActiveNetwork('ERC20'); });
+                transferNetworkAPT.addEventListener('click', function() { setTransferActiveNetwork('APT'); });
+                transferAmount.addEventListener('input', calculateReceiveAmount);
+                document.getElementById('transfer-max-btn').addEventListener('click', function() {
+                    var user = getCurrentUser();
+                    if (!user) return;
+                    var max = 0;
+                    if (currentTransferAsset === 'USDT') max = user.balance || 0;
+                    else if (currentTransferAsset === 'BTC') max = user.btcBalance || 0;
+                    else if (currentTransferAsset === 'ETH') max = user.ethBalance || 0;
+                    else if (currentTransferAsset === 'SOL') max = user.solBalance || 0;
+                    else if (currentTransferAsset === 'APT') max = user.aptBalance || 0;
+                    transferAmount.value = max.toFixed(currentTransferAsset === 'USDT' ? 2 : (currentTransferAsset ===
+                        'APT' ? 4 : 6));
+                    calculateReceiveAmount();
+                });
+                document.getElementById('transfer-submit-btn').addEventListener('click', function() {
+                    var recipent = document.getElementById('transfer-recipient').value.trim();
+                    var amount = parseFloat(transferAmount.value);
+                    var err = document.getElementById('transfer-error');
+                    err.classList.add('hidden');
+                    var result = processTransfer(currentTransferAsset, currentTransferNetwork, recipent, amount);
+                    if (!result.success) { err.textContent = result.message;
+                        err.classList.remove('hidden'); } else { showToast('تم تحويل ' + amount.toFixed(6) +
+                            ' ' + currentTransferAsset + ' بنجاح');
+                        document.getElementById('transfer-recipient').value = '';
+                        transferAmount.value = '';
+                        calculateReceiveAmount();
+                        updateTransferAvailable(); }
+                });
+
+                // مودال المزودين
+                var providersModal = document.getElementById('providers-modal');
+                document.getElementById('show-more-providers-btn').addEventListener('click', function() {
+                    renderProvidersList();
+                    providersModal.classList.remove('hidden');
+                });
+                document.getElementById('close-providers-modal').addEventListener('click', function() { providersModal
+                    .classList.add('hidden'); });
+
+                // مودال الترخيص
+                var licenseModal = document.getElementById('license-modal');
+                document.getElementById('alert-bell-icon').addEventListener('click', function() { licenseModal.classList
+                        .remove('hidden'); });
+                document.getElementById('close-license-modal').addEventListener('click', function() { licenseModal.classList
+                        .add('hidden'); });
+                document.getElementById('close-license-btn').addEventListener('click', function() { licenseModal.classList.add(
+                        'hidden'); });
+
+                // مودال الأخبار
+                var newsModal = document.getElementById('news-modal');
+                document.getElementById('new-news-btn').addEventListener('click', function() { newsModal.classList.remove(
+                        'hidden'); });
+                document.getElementById('close-news-modal').addEventListener('click', function() { newsModal.classList.add(
+                        'hidden'); });
+
+                // مودال الدعوة - الرابط الجديد
+                var inviteModal = document.getElementById('invite-modal');
+                document.getElementById('invite-btn').addEventListener('click', function() {
+                    updateInviteModalData();
+                    inviteModal.classList.remove('hidden');
+                });
+                document.getElementById('close-invite-modal').addEventListener('click', function() { inviteModal.classList.add(
+                        'hidden'); });
+                document.getElementById('close-invite-btn').addEventListener('click', function() { inviteModal.classList.add(
+                        'hidden'); });
+                document.getElementById('copy-invite-link').addEventListener('click', function() {
+                    var link = document.getElementById('invite-link').textContent;
+                    if (navigator.clipboard) navigator.clipboard.writeText(link).then(function() { showToast(
+                        'تم نسخ رابط الدعوة'); });
+                    else showToast('انسخ الرابط يدوياً', true);
+                });
+
+                // مودال V-Wallet
+                var walletModal = document.getElementById('wallet-modal');
+                document.getElementById('v-wallet-btn').addEventListener('click', function() { updateWalletModalData();
+                    walletModal.classList.remove('hidden'); });
+                document.getElementById('close-wallet-modal').addEventListener('click', function() { walletModal.classList
+                        .add('hidden'); });
+                document.getElementById('wallet-deposit-btn').addEventListener('click', function() { walletModal.classList.add(
+                        'hidden');
+                    openDepositModal(); });
+                document.getElementById('wallet-withdraw-btn').addEventListener('click', function() { walletModal.classList
+                        .add('hidden');
+                    openWithdrawModal(); });
+                document.getElementById('wallet-transfer-btn').addEventListener('click', function() { walletModal.classList.add(
+                        'hidden');
+                    switchPage('wallet'); });
+
+                // مودال تنبيهات الأسعار
+                var alertsModal = document.getElementById('alerts-modal');
+                document.getElementById('price-alerts-btn').addEventListener('click', function() {
+                    loadPriceAlerts();
+                    alertsModal.classList.remove('hidden');
+                });
+                document.getElementById('close-alerts-modal').addEventListener('click', function() { alertsModal.classList
+                        .add('hidden'); });
+                document.getElementById('add-alert-btn').addEventListener('click', function() {
+                    var symbol = document.getElementById('alert-symbol-select').value;
+                    var direction = document.getElementById('alert-direction').value;
+                    var price = parseFloat(document.getElementById('alert-price-input').value);
+                    if (isNaN(price) || price <= 0) { showToast('الرجاء إدخال سعر صحيح', true); return; }
+                    addPriceAlert(symbol, direction, price);
+                    document.getElementById('alert-price-input').value = '';
+                });
+
+                // التداول السريع
+                document.getElementById('quick-buy-btn').addEventListener('click', function() { openTradeModal('buy'); });
+                document.getElementById('quick-sell-btn').addEventListener('click', function() { openTradeModal('sell'); });
+                document.getElementById('close-trade-modal').addEventListener('click', function() { tradeModal.classList.add(
+                        'hidden'); });
+                document.getElementById('confirm-buy-trade').addEventListener('click', function() { executeTrade('buy'); });
+                document.getElementById('confirm-sell-trade').addEventListener('click', function() { executeTrade('sell'); });
+
+                // أزرار الإطار الزمني
+                document.querySelectorAll('.timeframe-btn').forEach(function(btn) { btn.addEventListener('click',
+                        function() { changeTimeframe(btn.dataset.tf); }); });
+
+                // التنقل السفلي
+                navItems.forEach(function(item) { item.addEventListener('click', function() { switchPage(item.dataset
+                        .page); }); });
+
+                // تسجيل الخروج
+                function logout() { clearSession();
+                    authScreen.classList.remove('hidden');
+                    mainScreen.classList.add('hidden');
+                    showLoginTab();
+                    showToast('تم تسجيل الخروج'); if (simulationInterval) clearInterval(simulationInterval); }
+                document.getElementById('logout-btn-header').addEventListener('click', logout);
+                document.getElementById('logout-btn-account').addEventListener('click', logout);
+
+                // تغيير كلمة المرور
+                var passModal = document.getElementById('password-modal');
+                document.getElementById('change-password-btn').addEventListener('click', function() { passModal.classList
+                        .remove('hidden'); });
+                document.getElementById('cancel-password').addEventListener('click', function() { passModal.classList.add(
+                        'hidden'); });
+                document.getElementById('save-password').addEventListener('click', function() {
+                    var curr = document.getElementById('current-password').value;
+                    var newP = document.getElementById('new-password').value;
+                    var conf = document.getElementById('confirm-new-password').value;
+                    var err = document.getElementById('password-error'),
+                        succ = document.getElementById('password-success');
+                    err.classList.add('hidden');
+                    succ.classList.add('hidden');
+                    var res = changePassword(curr, newP, conf);
+                    if (!res.success) { err.textContent = res.message;
+                        err.classList.remove('hidden'); } else { succ.textContent =
+                        '✅ تم تغيير كلمة المرور';
+                        succ.classList.remove('hidden');
+                        setTimeout(function() { passModal.classList.add('hidden'); }, 1200); }
+                });
+
+                if (!restoreSession()) showLoginTab();
+                else initMarketData();
+            });
+        })();
+    </script>
+</body>
+</html>
