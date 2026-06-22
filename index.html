@@ -1084,7 +1084,7 @@
                 <div class="p-4 rounded-xl border mb-4" style="background: var(--input-bg); border-color: var(--border);">
                     <p class="font-bold text-sm mb-2">رابط الإحالة الخاص بك</p>
                     <div class="flex items-center justify-between gap-2 p-2 rounded-lg border mb-3" style="background: var(--card); border-color: var(--border);">
-                        <code class="text-sm font-mono break-all flex-1" id="invite-link">https://exurs7app.github.io/ForX508/</code>
+                        <code class="text-sm font-mono break-all flex-1" id="invite-link">https://exurs7app.github.io/ForX7391/</code>
                         <button id="copy-invite-link" class="p-2 rounded-lg text-crypto-blue hover:opacity-80 transition flex-shrink-0" style="background: var(--input-bg);"><i class="fas fa-copy"></i></button>
                     </div>
                     <p class="text-xs" style="color: var(--text-secondary);">
@@ -2757,9 +2757,40 @@
                 document.getElementById('wallet-page-withdraw-btn').addEventListener('click', openWithdrawModal);
                 document.getElementById('cancel-deposit').addEventListener('click', closeModals);
                 document.getElementById('cancel-withdraw').addEventListener('click', closeModals);
+                // دالة نسخ موثوقة مع fallback
+                function copyTextReliable(text) {
+                    return new Promise(function(resolve, reject) {
+                        function fallback() {
+                            try {
+                                var ta = document.createElement('textarea');
+                                ta.value = text;
+                                ta.setAttribute('readonly', '');
+                                ta.style.position = 'fixed';
+                                ta.style.top = '0';
+                                ta.style.left = '0';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.focus();
+                                ta.select();
+                                ta.setSelectionRange(0, ta.value.length);
+                                var ok = document.execCommand('copy');
+                                document.body.removeChild(ta);
+                                ok ? resolve() : reject();
+                            } catch (e) { reject(e); }
+                        }
+                        if (navigator.clipboard && window.isSecureContext) {
+                            navigator.clipboard.writeText(text).then(resolve).catch(fallback);
+                        } else { fallback(); }
+                    });
+                }
+
                 document.getElementById('copy-address-btn').addEventListener('click', function() {
-                    navigator.clipboard ? navigator.clipboard.writeText(depositAddressSpan.textContent).then(
-                        function() { showToast('تم نسخ العنوان'); }) : showToast('انسخ يدوياً', true);
+                    var addr = depositAddressSpan.textContent;
+                    copyTextReliable(addr).then(function() {
+                        showToast('✅ تم نسخ العنوان: ' + addr);
+                    }).catch(function() {
+                        showToast('فشل النسخ، انسخ يدوياً: ' + addr, true);
+                    });
                 });
 
                 document.getElementById('confirm-withdraw').addEventListener('click', function() {
@@ -2778,13 +2809,11 @@
                 // نسخ رمز الإحالة
                 document.getElementById('copy-referral-code-btn').addEventListener('click', function() {
                     var code = document.getElementById('referral-code-display').textContent;
-                    if (navigator.clipboard) {
-                        navigator.clipboard.writeText(code).then(function() {
-                            showToast('✅ تم نسخ رمز الإحالة: ' + code);
-                        });
-                    } else {
-                        showToast('انسخ الكود يدوياً: ' + code, true);
-                    }
+                    copyTextReliable(code).then(function() {
+                        showToast('✅ تم نسخ رمز الإحالة: ' + code);
+                    }).catch(function() {
+                        showToast('فشل النسخ، انسخ يدوياً: ' + code, true);
+                    });
                 });
 
                 // التحويل
@@ -2891,9 +2920,11 @@
                         'hidden'); });
                 document.getElementById('copy-invite-link').addEventListener('click', function() {
                     var link = document.getElementById('invite-link').textContent;
-                    if (navigator.clipboard) navigator.clipboard.writeText(link).then(function() { showToast(
-                        'تم نسخ رابط الدعوة'); });
-                    else showToast('انسخ الرابط يدوياً', true);
+                    copyTextReliable(link).then(function() {
+                        showToast('✅ تم نسخ رابط الدعوة');
+                    }).catch(function() {
+                        showToast('فشل النسخ، انسخ يدوياً: ' + link, true);
+                    });
                 });
 
                 // مودال V-Wallet
